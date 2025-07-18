@@ -1,6 +1,6 @@
 import { http, HttpResponse } from 'msw';
-import { host } from '@Src/shared/mocks/mockConfig';
-import { addDelay } from '@Src/shared/mocks/handlers';
+import { host } from '@Src/shared/libs/mocks/mockConfig';
+import { addDelay } from '@Src/shared/libs/mocks/handlers';
 
 const testMockHandler = [
   http.get(`${host}/test`, async ({ request }) => {

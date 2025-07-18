@@ -76,6 +76,35 @@ const eslintConfig = [
     // FSD 계층별 import 제한
     overrides: [
       {
+        files: ['src/shared/**/*.{ts,tsx,js,jsx}'],
+        excludedFiles: ['src/shared/libs/**', '@Src/shared/libs/**'], // 이 파일은 제외
+        rules: {
+          'no-restricted-imports': [
+            'error',
+            {
+              patterns: [
+                {
+                  group: [
+                    '@Src/app/**',
+                    '@Src/pages/**',
+                    '@Src/widgets/**',
+                    '@Src/features/**',
+                    '@Src/entities/**',
+                    '../app/**',
+                    '../pages/**',
+                    '../widgets/**',
+                    '../features/**',
+                    '../entities/**',
+                  ],
+                  message:
+                    '🚫 shared 레이어에서는 app/pages/widgets/features/entities 를 import 할 수 없습니다.',
+                },
+              ],
+            },
+          ],
+        },
+      },
+      {
         files: ['src/entities/**/*.{ts,tsx,js,jsx}'],
         rules: {
           'no-restricted-imports': [
@@ -117,10 +146,10 @@ const eslintConfig = [
                     '../pages/**',
                     '../widgets/**',
                   ],
+                  message:
+                    '🚫 features 레이어에서는 app/pages/widgets 를 import 할 수 없습니다.',
                 },
               ],
-              message:
-                '🚫 features 레이어에서는 app/pages/widgets 를 import 할 수 없습니다.',
             },
           ],
         },
@@ -139,10 +168,10 @@ const eslintConfig = [
                     '../app/**',
                     '../pages/**',
                   ],
+                  message:
+                    '🚫 widgets 레이어에서는 app/pages 를 import 할 수 없습니다.',
                 },
               ],
-              message:
-                '🚫 widgets 레이어에서는 app/pages 를 import 할 수 없습니다.',
             },
           ],
         },
@@ -156,9 +185,10 @@ const eslintConfig = [
               patterns: [
                 {
                   group: ['@Src/app/**', '../app/**'],
+                  message:
+                    '🚫 widgets 레이어에서는 app/pages 를 import 할 수 없습니다.',
                 },
               ],
-              message: '🚫 pages 레이어에서는 app 을 import 할 수 없습니다.',
             },
           ],
         },

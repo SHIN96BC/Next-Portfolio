@@ -7,7 +7,7 @@ export async function register() {
     process.env.NEXT_PUBLIC_API_MOCKING === 'enabled' &&
     process.env.NEXT_RUNTIME === 'nodejs'
   ) {
-    const { mockServer } = await import('@Src/shared/mocks/server');
+    const { mockServer } = await import('@Src/shared/libs/mocks/server');
     mockServer.listen({ onUnhandledRequest: 'warn' });
     console.info('mockServer listening on port 3006');
   }
