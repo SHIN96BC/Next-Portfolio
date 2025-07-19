@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import commonAlertSlice from '@Src/shared/alert/model/commonAlertSlice';
+import { commonAlertSlice } from '@Src/shared/alert/model';
 // import authSlice from '@Src/lib/features/auth/authSlice';
 // import menusSlice from '@Src/lib/common/menus/menusSlice';
 

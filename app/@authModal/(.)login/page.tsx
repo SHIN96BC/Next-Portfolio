@@ -1,5 +1,5 @@
-import InterceptionModal from '@Src/shared/modal/ui/InterceptionModal';
-import LoginForm from '@Src/features/login/ui/LoginForm';
+import { InterceptionModal } from '@Src/shared/modal/ui';
+import { LoginForm } from '@Src/features/login/ui';
 
 export default function AuthModalLoginPage() {
   return (

@@ -1,11 +1,11 @@
 'use client';
 
-import CommonInput from '@Src/shared/input/ui/CommonInput';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { loginSchema, LoginSchemaType } from '@Src/features/login/model/schema';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
+import { CommonInput } from '@Src/shared/input/ui';
 
 type Props = {
   isInterceptionPage?: boolean;
