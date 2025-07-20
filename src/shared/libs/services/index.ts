@@ -12,6 +12,6 @@ export { default as ServiceContainerImpl } from './container/ServiceContainerImp
 
 export { serviceContainer } from './service';
 
-export * from './service.type';
+export type { Constructor, BatchBinding } from './service.type';
 export * from './service.constants';
 export * from './service.model';

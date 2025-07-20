@@ -9,7 +9,6 @@ export async function register() {
   ) {
     const { mockServer } = await import('@Src/shared/libs/mocks/server');
     mockServer.listen({ onUnhandledRequest: 'warn' });
-    console.info('mockServer listening on port 3006');
   }
 }
 

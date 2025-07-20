@@ -10,7 +10,7 @@ export default function MockServerInit({ children }: { children: ReactNode }) {
   useEffect(() => {
     const handleStopMockWorker = async () => {
       if (typeof window !== 'undefined') {
-        const { mockWorker } = await import('@Src/shared/libs/mocks');
+        const { mockWorker } = await import('@Src/shared/libs/mocks/browser');
         mockWorker.stop();
         setWorkerStarted(false);
       }
@@ -22,12 +22,11 @@ export default function MockServerInit({ children }: { children: ReactNode }) {
        * - Uncaught TypeError: Cannot read properties of undefined (reading 'url')
        */
       if (typeof window !== 'undefined') {
-        const { mockWorker } = await import('@Src/shared/libs/mocks');
+        const { mockWorker } = await import('@Src/shared/libs/mocks/browser');
         console.log('import mockWorker');
         await mockWorker.start({ onUnhandledRequest: 'warn' });
         console.log('mockWorker.start()');
         setWorkerStarted(true);
-        console.info('mockWorker listening on port 3006');
       }
     };
 
