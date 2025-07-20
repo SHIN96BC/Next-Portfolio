@@ -1,8 +1,13 @@
 import { HomeBtn, LoginBtn, LogoutBtn } from '@Src/entities/site/ui';
-import { useSession } from 'next-auth/react';
+import { SiteGnb } from '@Src/entities/site/model/client/gnb';
 
-export default function Header() {
-  const session = useSession();
+interface Props {
+  isLogin: boolean;
+  gnbList: SiteGnb[];
+}
+
+export default function Header({ isLogin, gnbList }: Props) {
+  console.log('gnbList = ', gnbList);
 
   return (
     <header className="sticky top-0 p-4 bg-primary text-white">
@@ -10,7 +15,7 @@ export default function Header() {
         <div>
           <HomeBtn />
         </div>
-        <div>{session && session.data ? <LogoutBtn /> : <LoginBtn />}</div>
+        <div>{isLogin ? <LogoutBtn /> : <LoginBtn />}</div>
       </div>
     </header>
   );

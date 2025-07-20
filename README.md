@@ -165,6 +165,11 @@ Fixes #98
 <br/>
 (이슈 merge 되는 순간 자동 close(이슈 닫기) + fixes(이슈 해결))
 
+### Hydration 기준
+- 완벽히 Server Component 라면 Hydration 없이 page 단에서 바로 fetch 함수로 호출하여 props 로 받아서 사용
+- Client Component 인데 SSR 이 필요하다면 Hydration 하여 사용
+- Client Component 인데 CSR 이라면 hook 을 사용
+
 ### 왜 yup이 아니라 zod를 선택했는가
 - yup의 장점
   - 오랫동안 사용되어 왔기 때문에 생태계가 넓다.
