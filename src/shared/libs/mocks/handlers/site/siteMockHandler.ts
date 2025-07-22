@@ -2,9 +2,9 @@ import { http, HttpResponse } from 'msw';
 import { host } from '@Src/shared/libs/mocks/mockConfig';
 import { addDelay } from '@Src/shared/libs/mocks/handlers';
 
-const siteHandler = [
-  http.get(`${host}/api/site/gnb`, async ({ request }) => {
-    console.log('msw get /gnb');
+const siteMockHandler = [
+  http.get(`${host}/site/gnb`, async ({ request }) => {
+    console.log('msw get /site/gnb');
     return addDelay(
       HttpResponse.json({
         status: 200,
@@ -77,4 +77,4 @@ const siteHandler = [
   }),
 ];
 
-export default siteHandler;
+export default siteMockHandler;

@@ -24,7 +24,7 @@ class SiteServiceImpl implements SiteService {
    * @returns {Promise<CommonRes<GnbGetRes>>}
    */
   getGnb(): Promise<CommonRes<GnbGetRes[]>> {
-    return this.base.http.get<CommonRes<GnbGetRes[]>>('/api/site/gnb');
+    return this.base.http.get<CommonRes<GnbGetRes[]>>('/site/gnb');
   }
 }
 

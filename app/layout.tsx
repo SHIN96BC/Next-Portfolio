@@ -7,9 +7,8 @@ import NextAuthProvider from '@Src/app/providers/NextAuthProvider';
 import { getServerSession } from 'next-auth';
 import nextAuthOptions from '@Src/app/config/next-auth';
 import AuthProvider from '@Src/app/providers/AuthProvider';
-import MockServerInit from '@Src/app/init/MockServerInit';
-import { Header } from '@Src/widgets/header/ui';
-import getServerGnb from './_actions/getServerGnb';
+import MockServerInit from '@Src/app/inits/MockServerInit';
+import '@Src/shared/libs/mocks/server';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -34,7 +33,6 @@ export default async function RootLayout({
   authModal: React.ReactNode;
 }>) {
   const session = await getServerSession(nextAuthOptions);
-  const gnbList = await getServerGnb();
 
   return (
     <html lang="en">
@@ -46,8 +44,6 @@ export default async function RootLayout({
             <NextAuthProvider session={session}>
               <AuthProvider>
                 <MockServerInit>
-                  <Header isLogin={!!session?.accessToken} gnbList={gnbList} />
-
                   {children}
                   {authModal}
                 </MockServerInit>

@@ -30,8 +30,6 @@ export const queryClient = new QueryClient({
 });
 
 export const getQueryClient = cache(() => {
-  console.log('getQueryClient');
-
   return new QueryClient({
     defaultOptions: {
       queries: {

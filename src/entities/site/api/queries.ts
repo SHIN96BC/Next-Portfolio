@@ -17,7 +17,7 @@ const queryOptions = {
     queryKey: queryKeys.findGnb,
     queryFn: async (): Promise<CommonRes<SiteGnb[]>> => {
       const service = serviceContainer.get<SiteService>(SERVICE_NAME.SITE);
-      const response = await service.getGnb(); // CommonRes<GnbGetRes[]>
+      const response = await service.getGnb();
 
       return {
         ...response,
