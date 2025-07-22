@@ -11,8 +11,6 @@ export default function AuthGuard({ children }: { children: ReactNode }) {
   const dispatch = useDispatch();
   const session = useSession();
 
-  console.log('session = ', session);
-
   const handleAlertOkBtn = () => {
     router.push('/login');
   };

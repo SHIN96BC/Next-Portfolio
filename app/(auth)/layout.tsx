@@ -1,4 +1,4 @@
-import GuestGuard from '@Src/app/guard/GuestGuard';
+import GuestGuard from '@Src/app/guards/GuestGuard';
 
 export default function AuthLayout({
   children,

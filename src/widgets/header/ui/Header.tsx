@@ -7,8 +7,6 @@ interface Props {
 }
 
 export default function Header({ isLogin, gnbList }: Props) {
-  console.log('gnbList = ', gnbList);
-
   return (
     <header className="sticky top-0 p-4 bg-primary text-white">
       <div className="w-full flex items-center justify-between">
