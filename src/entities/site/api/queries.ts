@@ -1,6 +1,9 @@
-import { CommonRes, serviceContainer } from '@Src/shared/libs/services';
+import {
+  CommonRes,
+  serviceContainer,
+  SERVICE_NAME,
+} from '@Src/shared/libs/services';
 import { SiteService } from '@Src/entities/site/api';
-import { SERVICE_NAME } from '@Src/shared/libs/services';
 import { SiteGnb } from '@Src/entities/site/model/client/gnb';
 import mapServerGnbToClient from '@Src/entities/site/model/mapper/mapServerGnbToClient';
 

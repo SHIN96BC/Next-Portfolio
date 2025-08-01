@@ -10,7 +10,7 @@ export { default as BindingImpl } from './binding/BindingImpl';
 export type { default as ServiceContainer } from './container/ServiceContainer';
 export { default as ServiceContainerImpl } from './container/ServiceContainerImpl';
 
-export { serviceContainer } from './service';
+export { serviceContainer } from './service.setup';
 
 export type { Constructor, BatchBinding } from './service.type';
 export * from './service.constants';

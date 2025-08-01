@@ -1,15 +1,16 @@
-import { BatchBinding, SERVICE_NAME } from '@Src/shared/libs/services/index';
 import {
+  BatchBinding,
+  SERVICE_NAME,
   BINDING_SCOPE,
   SERVICE_BASE_NAME,
-} from '@Src/shared/libs/services/index';
+  ServiceContainer,
+  ServiceContainerImpl,
+  CommonServiceBaseImpl,
+  FileServiceBaseImpl,
+  CommonServiceBase,
+  FileServiceBase,
+} from '@Src/shared/libs/services';
 import { SiteServiceImpl } from '@Src/entities/site/api';
-import { ServiceContainer } from '@Src/shared/libs/services/index';
-import { ServiceContainerImpl } from '@Src/shared/libs/services/index';
-import { CommonServiceBaseImpl } from '@Src/shared/libs/services/index';
-import { FileServiceBaseImpl } from '@Src/shared/libs/services/index';
-import { CommonServiceBase } from '@Src/shared/libs/services/index';
-import { FileServiceBase } from '@Src/shared/libs/services/index';
 
 const serviceBatchList: BatchBinding[] = [
   {

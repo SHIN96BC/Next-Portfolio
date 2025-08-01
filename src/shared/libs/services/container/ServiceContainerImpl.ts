@@ -1,8 +1,10 @@
-import { BINDING_SCOPE } from '@Src/shared/libs/services';
-import { BindingImpl } from '@Src/shared/libs/services';
-import { BatchBinding } from '@Src/shared/libs/services';
-import { ServiceContainer } from '@Src/shared/libs/services';
-import { Binding } from '@Src/shared/libs/services';
+import {
+  BINDING_SCOPE,
+  BindingImpl,
+  BatchBinding,
+  Binding,
+  ServiceContainer,
+} from '@Src/shared/libs/services';
 
 /**
  * API Service IoC Container

@@ -1,5 +1,4 @@
-import { BatchBinding } from '@Src/shared/libs/services';
-import { Binding } from '@Src/shared/libs/services';
+import { BatchBinding, Binding } from '@Src/shared/libs/services';
 
 export default interface ServiceContainer {
   bind<T>(name: symbol): Binding<T>;
