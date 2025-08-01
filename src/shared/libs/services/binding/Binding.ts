@@ -1,5 +1,4 @@
-import { BindingScopeType } from '@Src/shared/libs/services';
-import { Constructor } from '@Src/shared/libs/services';
+import { BindingScopeType, Constructor } from '@Src/shared/libs/services';
 
 export default interface Binding<T> {
   id: number;

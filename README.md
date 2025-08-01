@@ -26,6 +26,35 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
     </div>
 </div>
 
+## 관련 프로젝트 전체 구조
+
+### FE
+
+- Next.js(app router) Client Web
+  - Full Responsive Web Design
+  - FSD Pattern
+- Next.js(app router) Admin Web
+  - Full Responsive Web Design
+  - FSD Pattern
+- Flutter App
+
+
+### BE
+
+- Spring Boot 3.x.x(Gradle)
+  - MSA Architecture
+  - Gateway
+    - Admin BFF(REST API)
+    - Client BFF (GraphQL)
+- PostgreSQL
+- Nginx
+
+### DevOps
+
+- AWS Lightsail
+- Docker
+- Jenkins
+
 
 ## Design Pattern
 <div>
@@ -134,22 +163,23 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ### PR Description
 ex:
+## ✨ 작업 개요
 <br/>
-\## ✨ 작업 개요
+- 로그인 오류 발생 시 메시지 노출 문제 해결
 <br/>
-\- 로그인 오류 발생 시 메시지 노출 문제 해결
-<br/>
-\- 인코딩 설정을 UTF-8로 변경하여 특수문자 깨짐 방지
+- 인코딩 설정을 UTF-8로 변경하여 특수문자 깨짐 방지
 <br/><br/>
-\## 🔧 변경 사항
+
+## 🔧 변경 사항
 <br/>
-\- `LoginService`의 예외 메시지 처리 수정
+- `LoginService`의 예외 메시지 처리 수정
 <br/>
-\- `.editorconfig`에 charset 명시
+- `.editorconfig`에 charset 명시
 <br/>
-\- `build.gradle`에서 `fileEncoding` 명시
+- `build.gradle`에서 `fileEncoding` 명시
 <br/><br/>
-\## 🧪 테스트 방법
+
+## 🧪 테스트 방법
 <br/>
 1. 잘못된 아이디/비밀번호로 로그인 시도
    <br/>
@@ -157,7 +187,7 @@ ex:
    <br/>
 3. 브라우저에서 한글 파일명 다운로드 시 깨지지 않는지 확인
 
-\## 📎 관련 이슈
+## 📎 관련 이슈
 <br/>
 Closes #123
 <br/>
