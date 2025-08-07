@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Middleware } from '../middleware.type';
+import { Middleware } from '../middleware-type';
 
 export interface MiddlewareContainer {
   use(name: string, middleware: Middleware): this;

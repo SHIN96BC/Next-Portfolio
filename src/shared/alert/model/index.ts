@@ -1,1 +1,1 @@
-export { default as commonAlertSlice } from './commonAlertSlice';
+export { default as commonAlertSlice } from './common-alert-slice';

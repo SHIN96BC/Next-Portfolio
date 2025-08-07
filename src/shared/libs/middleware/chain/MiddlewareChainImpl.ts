@@ -1,5 +1,5 @@
 import MiddlewareChain from '@Src/shared/libs/middleware/chain/MiddlewareChain';
-import { Middleware } from '@Src/shared/libs/middleware/middleware.type';
+import { Middleware } from '@Src/shared/libs/middleware/middleware-type';
 import { NextRequest, NextResponse } from 'next/server';
 
 /**

@@ -1,4 +1,4 @@
-import { Middleware } from '@Src/shared/libs/middleware/middleware.type';
+import { Middleware } from '@Src/shared/libs/middleware/middleware-type';
 import { MiddlewareContainer } from './MiddlewareContainer';
 import MiddlewareChain from '@Src/shared/libs/middleware/chain/MiddlewareChain';
 import MiddlewareChainImpl from '@Src/shared/libs/middleware/chain/MiddlewareChainImpl';

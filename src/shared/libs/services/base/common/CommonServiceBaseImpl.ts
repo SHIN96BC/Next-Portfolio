@@ -1,6 +1,6 @@
 import convertToQueryString, {
   QueryParamObject,
-} from '@Src/shared/libs/utils/convertToQueryString';
+} from '@Src/shared/libs/utils/convert-to-query-string';
 import {
   CommonServiceBase,
   HTTPInstance,
