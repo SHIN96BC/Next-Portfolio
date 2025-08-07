@@ -5,7 +5,7 @@ import {
 } from '@Src/shared/libs/services';
 import { SiteService } from '@Src/entities/site/api';
 import { SiteGnb } from '@Src/entities/site/model/client/gnb';
-import mapServerGnbToClient from '@Src/entities/site/model/mapper/mapServerGnbToClient';
+import mapServerGnbToClient from '@Src/entities/site/model/mapper/map-server-gnb-to-client';
 
 /**
  * React Query Keys Object

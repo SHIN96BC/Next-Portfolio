@@ -80,6 +80,40 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 - 확장성 측면: 새로운 기능이 추가 되더라도 기존 폴더 구조를 수정할 필요 없이 새로운 폴더를 추가하기만 하면 되기 때문에 확장에 좀 더 유연하게 대처할 수 있습니다.
 - 협업 측면: 팀원들끼리 기능 단위로 작업을 나눠서 진행할 때 팀원들이 기능별로 독립적으로 작업할 수 있어 협업에 유리합니다.
 
+## Internationalization(국제화)
+- Dynamic routes 를 사용하여 페이지 언어 설정
+- 각 언어별 문구는 json 으로 정리
+- 정리된 json 을 가지고 type model 을 생성하여 type 추론
+  ```bash
+    # json 파일 기준으로 type 자동 생성
+    npm run gen:i18n-types
+  
+    # 계속 json 파일을 주시하며 json 파일이 저장되면 그 순간 자동으로 type 생성
+    npm run watch:i18n-types
+  ``` 
+- 정리된 json 파일명들을 기준으로 namespace 상수 자동 생성
+  ```bash
+    npm run gen:i18n-namespaces
+  ```
+- Server Component 에서는 getI18nTranslator() 함수 사용
+- Client Component 에서는 
+
+## File Name Pattern
+| 역할 / 타입               | 권장 명명 규칙             | 예시 파일명                                   | 비고                               |
+| --------------------- | -------------------- | ---------------------------------------- | -------------------------------- |
+| **React Component**   | `PascalCase`         | `LoginModal.tsx`, `UserCard.tsx`         | **무조건 PascalCase**. JSX/TSX 컴포넌트 |
+| **Next.js 페이지**       | `lowercase`          | `page.tsx`, `layout.tsx`, `route.ts`     | Next 13+ app dir 기준              |
+| **유틸 함수 / 헬퍼**        | `kebab-case`         | `format-date.ts`, `parse-url.ts`         | 일반 함수/로직 파일은 kebab-case          |
+| **커스텀 훅**             | `camelCase` 시작       | `useAuth.ts`, `useScroll.ts`             | `use` prefix 유지, camelCase       |
+| **타입/모델 정의**          | `kebab-case`         | `user-model.ts`, `auth-types.ts`         | 도메인 기준으로 prefix 붙임               |
+| **enum 정의**           | `kebab-case + .enum` | `status.enum.ts`                         | enum만 따로 관리할 경우                  |
+| **상수 파일 (도메인)**       | `kebab-case`         | `auth-constants.ts`, `user-constants.ts` | 도메인 기준 prefix                    |
+| **상수 파일 (글로벌)**       | `constants.ts`       | `constants.ts`                           | 작은 프로젝트 or 전역 상수                 |
+| **API 핸들러 (Next.js)** | `route.ts`           | `route.ts`                               | Next 13 app router 표준            |
+| **설정 / 초기화**          | `dot.case`           | `jest.setup.ts`, `next.config.js`        | Node, Tool 설정계층 파일               |
+| **스키마 (zod 등)**       | `kebab-case`         | `user-schema.ts`, `env-schema.ts`        | 주로 zod/yup 스키마에서 사용              |
+| **DTO / Entity**      | `kebab-case`         | `user.dto.ts`, `product.entity.ts`       | 백엔드 스타일일 땐 suffix 구분             |
+
 
 ## Services Folder And File Rules
 - *DIP 원칙을 지켜서 해당 Service 객체들을 사용하는 곳에서는 반드시 구현체가 아닌 인터페이스에만 의존할 것) (Domain Service에서 Base가 필요한 경우 생성자 주입 방식으로 주입하여 싱글톤으로 사용
@@ -100,8 +134,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
   - mutations.ts: useMutation 에 사용될 mutation key, mutation function 정의
   - use(Domain Name)Service.ts: Api Call Custom Hooks 정의
 - /services/model.ts: 공통 Request, Response Model 정의
-- /services/service.constants.ts: Service에서 공통으로 사용되는 상수 값들 정의
-- /services/service.type.d.ts: Service에서 공통으로 사용되는 type 정의
+- /services/service-constants.ts: Service에서 공통으로 사용되는 상수 값들 정의
+- /services/service-type.d.ts: Service에서 공통으로 사용되는 type 정의
 
 ## Service Naming Rules
 - /service/domain/(Domain Name):
@@ -195,12 +229,12 @@ Fixes #98
 <br/>
 (이슈 merge 되는 순간 자동 close(이슈 닫기) + fixes(이슈 해결))
 
-### Hydration 기준
+## Hydration 기준
 - 완벽히 Server Component 라면 Hydration 없이 page 단에서 바로 fetch 함수로 호출하여 props 로 받아서 사용
 - Client Component 인데 SSR 이 필요하다면 Hydration 하여 사용
 - Client Component 인데 CSR 이라면 hook 을 사용
 
-### 왜 yup이 아니라 zod를 선택했는가
+## 왜 yup이 아니라 zod를 선택했는가
 - yup의 장점
   - 오랫동안 사용되어 왔기 때문에 생태계가 넓다.
   - 검증된 라이브러리이고, Formik 라이브러리와의 통합이 잘 되어있다.

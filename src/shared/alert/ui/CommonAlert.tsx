@@ -1,9 +1,9 @@
 'use client';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@Src/shared/libs/store/model/store.type';
+import { RootState } from '@Src/shared/libs/store/model/store-type';
 import { useCallback } from 'react';
-import { hideCommonAlert } from '@Src/shared/alert/model/commonAlertSlice';
+import { hideCommonAlert } from '@Src/shared/alert/model/common-alert-slice';
 
 export default function CommonAlert() {
   const dispatch = useDispatch();

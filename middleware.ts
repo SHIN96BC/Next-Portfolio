@@ -2,7 +2,7 @@ import {
   COOKIE_AGE,
   COOKIE_NAME,
   supportedLocales,
-} from '@Src/shared/libs/middleware/middleware.constants';
+} from '@Src/shared/libs/middleware/middleware-constants';
 import { NextRequest, NextResponse } from 'next/server';
 import {
   getPreferredLang,
