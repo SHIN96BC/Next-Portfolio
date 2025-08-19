@@ -3,6 +3,10 @@
 import { ReactNode, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { serviceContainer } from '@Src/shared/libs/services';
+import {
+  setGraphqlToken,
+  clearGraphqlToken,
+} from '@Src/shared/libs/graphql/graphql-client';
 
 /**
  * Auth Provider
@@ -18,8 +22,10 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
     if (session && session.data && session.data.accessToken) {
       console.log('AuthProvider Effect');
       serviceContainer.setToken(session.data.accessToken);
+      setGraphqlToken(session.data.accessToken);
     } else {
       serviceContainer.clearToken();
+      clearGraphqlToken();
     }
   }, [session]);
 
