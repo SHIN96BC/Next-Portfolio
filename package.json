@@ -15,7 +15,10 @@
     "watch:i18n-types": "chokidar \"src/shared/libs/i18n/locales/**/*.json\" -c \"npm run gen:i18n-types\"",
     "gen:i18n-namespaces": "tsx src/shared/libs/i18n/scripts/generate-i18n-dictionary-namespaces",
     "gen:i18n-locales": "tsx src/shared/libs/i18n/scripts/generate-i18n-locales.ts",
-    "gen:i18n": "npm run gen:i18n-types && npm run gen:i18n-namespaces && npm run gen:i18n-locales"
+    "gen:i18n": "npm run gen:i18n-types && npm run gen:i18n-namespaces && npm run gen:i18n-locales",
+    "gen:graphql": "graphql-codegen --config graphql-codegen.ts",
+    "gen:graphql:check": "graphql-codegen --config graphql-codegen.ts --errors-only",
+    "watch:graphql-codegen": "graphql-codegen --config graphql-codegen.ts --watch"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
@@ -23,6 +26,8 @@
     "@tanstack/react-query": "^5.83.0",
     "@tanstack/react-query-devtools": "^5.83.0",
     "crypto-js": "^4.2.0",
+    "graphql": "^16.11.0",
+    "graphql-request": "^7.2.0",
     "next": "15.4.1",
     "next-auth": "^4.24.11",
     "react": "19.1.0",
@@ -34,6 +39,10 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@graphql-codegen/cli": "^5.0.7",
+    "@graphql-codegen/typescript": "^4.1.6",
+    "@graphql-codegen/typescript-operations": "^4.6.1",
+    "@graphql-codegen/typescript-react-query": "^6.1.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -44,6 +53,7 @@
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.1",
+    "glob": "^11.0.3",
     "husky": "^9.1.7",
     "jest": "^30.0.4",
     "jest-environment-jsdom": "^30.0.4",
