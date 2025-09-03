@@ -98,6 +98,23 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 - Server Component 에서는 getI18nTranslator() 함수 사용
 - Client Component 에서는 
 
+## API Server
+- REST & GraphQL 혼합형 구조
+
+### REST
+- 비즈니스 중요도가 높은 민감한 데이터나 GraphQL 로 다루기 용이하지 않은 파일 관련 로직이나 외부 시스템을 연동하는 부분에는 안정성이 중요하기 때문에 안정적인 REST 사용
+
+### GraphQL
+- Client 가 자주 바뀌거나, 검색, 리스트, 필터링, 정렬 등 복잡한 조건이 붙거나, 비즈니스 중요도가 낮은 비정형/유동적인 응답 구조에는 Client 주도형 쿼리 구조가 유리하기 때문에 GraphQL 사용
+- graphql-codegen 으로 type 과 hook 을 자동 생성
+  ```bash
+  npm run gen:graphql
+  ```
+- graphql 스키마 유효성 검사
+  ```bash
+  gen:graphql:check
+  ```
+
 ## File Name Pattern
 | 역할 / 타입               | 권장 명명 규칙             | 예시 파일명                                   | 비고                               |
 | --------------------- | -------------------- | ---------------------------------------- | -------------------------------- |
@@ -115,7 +132,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 | **DTO / Entity**      | `kebab-case`         | `user.dto.ts`, `product.entity.ts`       | 백엔드 스타일일 땐 suffix 구분             |
 
 
-## Services Folder And File Rules
+## REST Services Folder And File Rules
 - *DIP 원칙을 지켜서 해당 Service 객체들을 사용하는 곳에서는 반드시 구현체가 아닌 인터페이스에만 의존할 것) (Domain Service에서 Base가 필요한 경우 생성자 주입 방식으로 주입하여 싱글톤으로 사용
 - /services/base/(Base Name):
   - (Base Name)ServiceBase.ts: 서비스의 기본이 되는 HTTP 통신, token 관리 등의 메서드들을 가진 Interface 정의
@@ -137,7 +154,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 - /services/service-constants.ts: Service에서 공통으로 사용되는 상수 값들 정의
 - /services/service-type.d.ts: Service에서 공통으로 사용되는 type 정의
 
-## Service Naming Rules
+## REST Service Naming Rules
 - /service/domain/(Domain Name):
   - (Domain Name)Service.ts & (Domain Name)ServiceImpl.ts:
     - Method명:
