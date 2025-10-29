@@ -1,7 +1,4 @@
-import {
-  FileInstance,
-  FileServiceBase,
-} from '@Src/shared/libs/services/base/file/FileServiceBase';
+import { FileInstance, FileServiceBase } from '@Src/shared/libs/services/base/file/FileServiceBase';
 
 /**
  * API File Request Base
@@ -93,12 +90,7 @@ class FileServiceBaseImpl implements FileServiceBase {
    * @returns {Promise<boolean>}
    * @private
    */
-  private async fileRequest<R>(
-    method: string,
-    url: string,
-    data: FormData,
-    config?: RequestInit
-  ): Promise<R> {
+  private async fileRequest<R>(method: string, url: string, data: FormData, config?: RequestInit): Promise<R> {
     try {
       const response = await fetch(url, {
         method,
@@ -131,11 +123,7 @@ class FileServiceBaseImpl implements FileServiceBase {
    * @param {RequestInit} config
    * @returns {Promise<R>}
    */
-  public fileUpload<R>(
-    url: string,
-    data: FormData,
-    config?: RequestInit
-  ): Promise<R> {
+  public fileUpload<R>(url: string, data: FormData, config?: RequestInit): Promise<R> {
     return this.fileRequest<R>('POST', url, data, config);
   }
 }

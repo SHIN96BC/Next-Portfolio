@@ -1,18 +1,13 @@
 /**
  * Password validator for login pages
  */
-import {
-  NumbColorFunc,
-  StringBoolFunc,
-  StringNumFunc,
-} from '@Src/shared/validations/model/password';
+import { NumbColorFunc, StringBoolFunc, StringNumFunc } from '@Src/shared/validations/model/password';
 
 // has number
 const hasNumber: StringBoolFunc = (number) => /[0-9]/.test(number);
 
 // has mix of small and capitals
-const hasMixed: StringBoolFunc = (number) =>
-  /[a-z]/.test(number) && /[A-Z]/.test(number);
+const hasMixed: StringBoolFunc = (number) => /[a-z]/.test(number) && /[A-Z]/.test(number);
 
 // has special chars
 const hasSpecial: StringBoolFunc = (number) => /[!#@$%^&*)(+=._-]/.test(number);

@@ -7,12 +7,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export default function LinkBtn({
-  href,
-  className,
-  passHref,
-  children,
-}: Props) {
+export default function LinkBtn({ href, className, passHref, children }: Props) {
   return (
     <Link href={href} className={className} passHref={passHref}>
       {children}

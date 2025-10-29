@@ -1,10 +1,5 @@
-import convertToQueryString, {
-  QueryParamObject,
-} from '@Src/shared/libs/utils/convert-to-query-string';
-import {
-  CommonServiceBase,
-  HTTPInstance,
-} from '@Src/shared/libs/services/base/common/CommonServiceBase';
+import { CommonServiceBase, HTTPInstance } from '@Src/shared/libs/services/base/common/CommonServiceBase';
+import convertToQueryString, { QueryParamObject } from '@Src/shared/libs/utils/convert-to-query-string';
 
 /**
  * API Request Service Base
@@ -142,11 +137,7 @@ class CommonServiceBaseImpl implements CommonServiceBase {
    * @param {RequestInit} config
    * @returns {Promise<R>}
    */
-  private get<R, A = NonNullable<unknown>>(
-    url: string,
-    params?: A,
-    config?: RequestInit
-  ): Promise<R> {
+  private get<R, A = NonNullable<unknown>>(url: string, params?: A, config?: RequestInit): Promise<R> {
     return this.request<R>({ method: 'GET', url, params, config });
   }
 
@@ -157,11 +148,7 @@ class CommonServiceBaseImpl implements CommonServiceBase {
    * @param {RequestInit} config
    * @returns {Promise<R>}
    */
-  private delete<R, A = NonNullable<unknown>>(
-    url: string,
-    params?: A,
-    config?: RequestInit
-  ): Promise<R> {
+  private delete<R, A = NonNullable<unknown>>(url: string, params?: A, config?: RequestInit): Promise<R> {
     return this.request<R>({ method: 'DELETE', url, params, config });
   }
 
@@ -192,11 +179,7 @@ class CommonServiceBaseImpl implements CommonServiceBase {
    * @param {RequestInit} config
    * @returns {Promise<R>}
    */
-  private post<R, A = NonNullable<unknown>>(
-    url: string,
-    data?: A,
-    config?: RequestInit
-  ): Promise<R> {
+  private post<R, A = NonNullable<unknown>>(url: string, data?: A, config?: RequestInit): Promise<R> {
     return this.request<R>({ method: 'POST', url, data, config });
   }
 
@@ -207,11 +190,7 @@ class CommonServiceBaseImpl implements CommonServiceBase {
    * @param {RequestInit} config
    * @returns {Promise<R>}
    */
-  private put<R, A = NonNullable<unknown>>(
-    url: string,
-    data?: A,
-    config?: RequestInit
-  ): Promise<R> {
+  private put<R, A = NonNullable<unknown>>(url: string, data?: A, config?: RequestInit): Promise<R> {
     return this.request<R>({ method: 'PUT', url, data, config });
   }
 
@@ -222,11 +201,7 @@ class CommonServiceBaseImpl implements CommonServiceBase {
    * @param {RequestInit} config
    * @returns {Promise<R>}
    */
-  private patch<R, A = NonNullable<unknown>>(
-    url: string,
-    data?: A,
-    config?: RequestInit
-  ): Promise<R> {
+  private patch<R, A = NonNullable<unknown>>(url: string, data?: A, config?: RequestInit): Promise<R> {
     return this.request<R>({ method: 'PATCH', url, data, config });
   }
 }

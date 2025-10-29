@@ -1,7 +1,7 @@
 import 'server-only';
-import getI18nDictionary from '@Src/shared/libs/i18n/utils/get-i18n-dictionary';
 import { Locale, Namespace } from '@Src/shared/libs/i18n';
 import { DictionaryNamespaceMap } from '@Src/shared/libs/i18n/i18n-type';
+import getI18nDictionary from '@Src/shared/libs/i18n/utils/get-i18n-dictionary';
 
 /**
  * 주어진 locale에 맞는 번역 메시지를 불러오고,

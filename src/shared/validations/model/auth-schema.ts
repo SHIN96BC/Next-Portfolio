@@ -1,10 +1,7 @@
 import { z } from 'zod';
 
 export const emailSchema = z.object({
-  email: z
-    .email('Please provide a valid email.')
-    .min(1, 'Please enter your email.')
-    .max(255, 'email is too long'),
+  email: z.email('Please provide a valid email.').min(1, 'Please enter your email.').max(255, 'email is too long'),
 });
 
 export const passwordSchema = z.object({

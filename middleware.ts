@@ -1,15 +1,11 @@
 import {
-  COOKIE_AGE,
-  COOKIE_NAME,
-  supportedLocales,
-} from '@Src/shared/libs/middleware/middleware-constants';
-import { NextRequest, NextResponse } from 'next/server';
-import {
   getPreferredLang,
   middlewareContainer,
   redirectWithLang,
   stripLocalePrefix,
 } from '@Src/shared/libs/middleware';
+import { COOKIE_AGE, COOKIE_NAME, supportedLocales } from '@Src/shared/libs/middleware/middleware-constants';
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function middleware(request: NextRequest) {
   if (!request.url) {

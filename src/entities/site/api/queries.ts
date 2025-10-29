@@ -1,11 +1,7 @@
-import {
-  CommonRes,
-  serviceContainer,
-  SERVICE_NAME,
-} from '@Src/shared/libs/services';
 import { SiteService } from '@Src/entities/site/api';
 import { SiteGnb } from '@Src/entities/site/model/client/gnb';
 import mapServerGnbToClient from '@Src/entities/site/model/mapper/map-server-gnb-to-client';
+import { CommonRes, SERVICE_NAME, serviceContainer } from '@Src/shared/libs/services';
 
 /**
  * React Query Keys Object
@@ -24,9 +20,7 @@ const queryOptions = {
 
       return {
         ...response,
-        result: response.result
-          ? mapServerGnbToClient(response.result)
-          : undefined,
+        result: response.result ? mapServerGnbToClient(response.result) : undefined,
       };
     },
   }),

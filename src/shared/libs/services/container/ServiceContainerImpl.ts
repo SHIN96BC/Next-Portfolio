@@ -1,10 +1,4 @@
-import {
-  BINDING_SCOPE,
-  BindingImpl,
-  BatchBinding,
-  Binding,
-  ServiceContainer,
-} from '@Src/shared/libs/services';
+import { BatchBinding, BINDING_SCOPE, Binding, BindingImpl, ServiceContainer } from '@Src/shared/libs/services';
 
 /**
  * API Service IoC Container
@@ -16,10 +10,7 @@ class ServiceContainerImpl implements ServiceContainer {
    * @type {Map<symbol, Binding<any>>}
    * @private
    */
-  private readonly servicesBaseBind: Map<symbol, Binding<any>> = new Map<
-    symbol,
-    Binding<any>
-  >();
+  private readonly servicesBaseBind: Map<symbol, Binding<any>> = new Map<symbol, Binding<any>>();
 
   /**
    * Service Instance Map
@@ -27,10 +18,7 @@ class ServiceContainerImpl implements ServiceContainer {
    * @type {Map<symbol, Binding<any>>}
    * @private
    */
-  private readonly servicesBind: Map<symbol, Binding<any>> = new Map<
-    symbol,
-    Binding<any>
-  >();
+  private readonly servicesBind: Map<symbol, Binding<any>> = new Map<symbol, Binding<any>>();
 
   /**
    * Authorization Token
@@ -160,9 +148,7 @@ class ServiceContainerImpl implements ServiceContainer {
       if (baseBinding) {
         service = binding.getInstance(baseBinding.getInstance());
       } else {
-        throw new Error(
-          `Service Base ${binding.baseName.toString()} not found`
-        );
+        throw new Error(`Service Base ${binding.baseName.toString()} not found`);
       }
     } else {
       service = binding.getInstance();
@@ -250,21 +236,16 @@ class ServiceContainerImpl implements ServiceContainer {
    */
   // token update를 비동기로 병렬처리해서 성능을 향상시킨다.
   private async updateServicesToken(token: string | null): Promise<void> {
-    const updates = Array.from(this.servicesBaseBind.values()).map(
-      async (service) => {
-        const instance = service.getInstance();
-        try {
-          if (
-            'setToken' in instance &&
-            typeof instance.setToken === 'function'
-          ) {
-            await instance.setToken(token);
-          }
-        } catch (error) {
-          console.error(`Error updating token for service: ${instance}`, error);
+    const updates = Array.from(this.servicesBaseBind.values()).map(async (service) => {
+      const instance = service.getInstance();
+      try {
+        if ('setToken' in instance && typeof instance.setToken === 'function') {
+          await instance.setToken(token);
         }
+      } catch (error) {
+        console.error(`Error updating token for service: ${instance}`, error);
       }
-    );
+    });
     await Promise.all(updates);
   }
 }

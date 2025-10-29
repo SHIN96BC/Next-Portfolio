@@ -1,8 +1,7 @@
-import { useContext, useEffect, useState } from 'react';
 import I18nContext from '@Src/app/i18n/contexts/I18nContext';
-import { getI18nDictionary } from '@Src/shared/libs/i18n';
-import { Namespace } from '@Src/shared/libs/i18n';
+import { getI18nDictionary, Namespace } from '@Src/shared/libs/i18n';
 import { DictionaryNamespaceMap } from '@Src/shared/libs/i18n/i18n-type';
+import { useContext, useEffect, useState } from 'react';
 
 const useI18nContext = () => {
   const context = useContext(I18nContext);
@@ -18,9 +17,7 @@ const useI18nContext = () => {
  * 타입은 자동으로 DictionaryNamespaceMap['main']으로 타입 추론
  * @param namespace
  */
-const useI18n = <N extends Namespace>(
-  namespace: N
-): { dict: DictionaryNamespaceMap[N] } => {
+const useI18n = <N extends Namespace>(namespace: N): { dict: DictionaryNamespaceMap[N] } => {
   // 현재 설정된 locale
   const { locale } = useI18nContext();
 

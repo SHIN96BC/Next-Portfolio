@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import '../globals.css';
-import StoreProvider from '@Src/app/store/providers/StoreProvider';
-import ReactQueryProvider from '@Src/app/react-query/providers/ReactQueryProvider';
-import NextAuthProvider from '@Src/app/auth/providers/NextAuthProvider';
-import { getServerSession } from 'next-auth';
 import nextAuthOptions from '@Src/app/auth/config/next-auth';
 import AuthProvider from '@Src/app/auth/providers/AuthProvider';
+import NextAuthProvider from '@Src/app/auth/providers/NextAuthProvider';
 import MockServerInit from '@Src/app/mock/inits/MockServerInit';
+import ReactQueryProvider from '@Src/app/react-query/providers/ReactQueryProvider';
+import StoreProvider from '@Src/app/store/providers/StoreProvider';
+import { getServerSession } from 'next-auth';
 import '@Src/shared/libs/mocks/mock-server.setup';
 import I18nProvider from '@Src/app/i18n/providers/I18nProvider';
 import { Locale } from '@Src/shared/libs/i18n';
@@ -41,9 +41,7 @@ export default async function RootLayout({
 
   return (
     <html lang={lang}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <StoreProvider>
           <ReactQueryProvider>
             <NextAuthProvider session={session}>

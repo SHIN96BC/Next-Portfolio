@@ -1,9 +1,5 @@
+import { emailSchema, passwordSchema, submitSchema } from '@Src/shared/validations/model/auth-schema';
 import { z } from 'zod';
-import {
-  emailSchema,
-  passwordSchema,
-  submitSchema,
-} from '@Src/shared/validations/model/auth-schema';
 
 export const loginSchema = z.object({
   ...emailSchema.shape,

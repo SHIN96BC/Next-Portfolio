@@ -8,10 +8,7 @@ import dictionaries from '@Src/shared/libs/i18n/dictionaries';
  * @param namespace JSON 파일명 (예: 'common', 'main')
  * @returns 해당 메시지 객체 (Promise<Record<string, string>>)
  */
-export default async function getI18nDictionary(
-  locale: Locale,
-  namespace: Namespace
-) {
+export default async function getI18nDictionary(locale: Locale, namespace: Namespace) {
   const localeDictionaries = dictionaries[locale];
   if (!localeDictionaries) {
     throw new Error(`Locale '${locale}' not supported`);
@@ -19,9 +16,7 @@ export default async function getI18nDictionary(
 
   const loadNamespace = localeDictionaries[namespace];
   if (!loadNamespace) {
-    throw new Error(
-      `Namespace '${namespace}' not found for locale '${locale}'`
-    );
+    throw new Error(`Namespace '${namespace}' not found for locale '${locale}'`);
   }
 
   return loadNamespace();

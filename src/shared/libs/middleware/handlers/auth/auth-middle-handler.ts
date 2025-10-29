@@ -5,10 +5,7 @@ import { Middleware, NextHandler } from '../../middleware-type';
  * 인증 토큰이 없으면 로그인 페이지로 리디렉션하고,
  * 있으면 다음 미들웨어로 진행
  */
-const authMiddleHandler: Middleware = async (
-  req: NextRequest,
-  next: NextHandler
-) => {
+const authMiddleHandler: Middleware = async (req: NextRequest, next: NextHandler) => {
   const token = req.cookies.get('auth_token')?.value;
 
   if (!token) {

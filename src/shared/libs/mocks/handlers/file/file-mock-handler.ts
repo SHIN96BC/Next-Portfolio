@@ -1,4 +1,4 @@
-import { http, HttpResponse } from 'msw';
+import { HttpResponse, http } from 'msw';
 
 const fileMockHandler = [
   http.post('http://localhost:8080/file/upload', async () => {

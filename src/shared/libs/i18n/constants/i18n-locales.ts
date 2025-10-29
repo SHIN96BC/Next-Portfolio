@@ -7,5 +7,4 @@ export const I18N_LOCALE = {
 } as const;
 
 // 지원하는 언어
-export type Locale =
-  typeof I18N_LOCALE[keyof typeof I18N_LOCALE];
+export type Locale = (typeof I18N_LOCALE)[keyof typeof I18N_LOCALE];

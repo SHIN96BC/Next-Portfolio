@@ -9,11 +9,11 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 ## Skill
 <div>
     <div>
-        <img src="https://img.shields.io/badge/Node.js(v20.16.0)-339933?style=flat&logo=node.js&logoColor=white"/>
+        <img src="https://img.shields.io/badge/Node.js(v22.17.0)-339933?style=flat&logo=node.js&logoColor=white"/>
         <img src="https://img.shields.io/badge/npm(v10.9.1)-CB3837?style=flat&logo=npm&logoColor=white"/>
     </div>
     <div>
-        <img src="https://img.shields.io/badge/Next(v15.4.1)-000000?style=flat&logo=next.js&logoColor=white"/>
+        <img src="https://img.shields.io/badge/Next(v15.5.6)-000000?style=flat&logo=next.js&logoColor=white"/>
         <img src="https://img.shields.io/badge/React(v19)-61DAFB?style=flat&logo=react&logoColor=white"/>
         <img src="https://img.shields.io/badge/Typescript-3178C6?style=flat&logo=typescript&logoColor=white"/>
     </div>
@@ -36,7 +36,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 - Next.js(app router) Admin Web
   - Full Responsive Web Design
   - FSD Pattern
-- Flutter App
+- Flutter Client App
 
 
 ### BE
@@ -44,8 +44,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 - Spring Boot 3.x.x(Gradle)
   - MSA Architecture
   - Gateway
-    - Admin BFF(REST API)
-    - Client BFF (GraphQL)
+    - Admin BFF(GraphQL)
+    - Client BFF (REST API)
 - PostgreSQL
 - Nginx
 
@@ -212,6 +212,14 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
   <br/>
   로그인 기능 구현 상세
 
+
+### Issues Description
+ex:
+## ☄️ 이슈 설명
+1. 로그인 시 오류 발생
+   - ... 자세한 설명 작성 ...
+
+
 ### PR Description
 ex:
 ## ✨ 작업 개요
@@ -223,11 +231,11 @@ ex:
 
 ## 🔧 변경 사항
 <br/>
-- `LoginService`의 예외 메시지 처리 수정
+1. `LoginService`의 예외 메시지 처리 수정
 <br/>
-- `.editorconfig`에 charset 명시
+2. `.editorconfig`에 charset 명시
 <br/>
-- `build.gradle`에서 `fileEncoding` 명시
+3. `build.gradle`에서 `fileEncoding` 명시
 <br/><br/>
 
 ## 🧪 테스트 방법

@@ -1,8 +1,8 @@
 'use client';
 
-import { createPortal } from 'react-dom';
 import { useRouter } from 'next/navigation';
 import { type ElementRef, ReactNode, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 
 interface Props {
   maxWidth?: number | string;
@@ -10,11 +10,7 @@ interface Props {
   children: ReactNode;
 }
 
-export default function InterceptionModal({
-  maxWidth,
-  maxHeight,
-  children,
-}: Props) {
+export default function InterceptionModal({ maxWidth, maxHeight, children }: Props) {
   const router = useRouter();
   const dialogRef = useRef<ElementRef<'dialog'>>(null);
 
