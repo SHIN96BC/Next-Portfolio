@@ -1,12 +1,9 @@
 'use client';
 
-import { ReactNode, useEffect } from 'react';
-import { useSession } from 'next-auth/react';
+import { clearGraphqlToken, setGraphqlToken } from '@Src/shared/libs/graphql/graphql-client';
 import { serviceContainer } from '@Src/shared/libs/services';
-import {
-  setGraphqlToken,
-  clearGraphqlToken,
-} from '@Src/shared/libs/graphql/graphql-client';
+import { useSession } from 'next-auth/react';
+import { ReactNode, useEffect } from 'react';
 
 /**
  * Auth Provider

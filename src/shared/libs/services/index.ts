@@ -1,7 +1,6 @@
 export type { CommonServiceBase } from './base/common/CommonServiceBase';
-export type { FileServiceBase } from './base/file/FileServiceBase';
-
 export { default as CommonServiceBaseImpl } from './base/common/CommonServiceBaseImpl';
+export type { FileServiceBase } from './base/file/FileServiceBase';
 export { default as FileServiceBaseImpl } from './base/file/FileServiceBaseImpl';
 
 export type { default as Binding } from './binding/Binding';
@@ -11,7 +10,6 @@ export type { default as ServiceContainer } from './container/ServiceContainer';
 export { default as ServiceContainerImpl } from './container/ServiceContainerImpl';
 
 export { serviceContainer } from './service.setup';
-
-export type { Constructor, BatchBinding } from './service-type';
 export * from './service-constants';
 export * from './service-model';
+export type { BatchBinding, Constructor } from './service-type';

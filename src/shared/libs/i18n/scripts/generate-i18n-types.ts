@@ -6,9 +6,7 @@ const localesDir = path.join(__dirname, '../locales/ko');
 const outputDir = path.join(__dirname, '../types');
 
 function toPascalCase(str: string) {
-  return str.replace(/(^\w|-\w)/g, (match) =>
-    match.replace(/-/, '').toUpperCase()
-  );
+  return str.replace(/(^\w|-\w)/g, (match) => match.replace(/-/, '').toUpperCase());
 }
 
 function jsonToTsType(obj: any, indent = 2): string {

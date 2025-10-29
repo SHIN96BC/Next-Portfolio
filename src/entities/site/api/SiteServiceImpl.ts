@@ -1,6 +1,6 @@
 import SiteService from '@Src/entities/site/api/SiteService';
-import { CommonRes, CommonServiceBase } from '@Src/shared/libs/services';
 import { GnbGetRes } from '@Src/entities/site/model/server';
+import { CommonRes, CommonServiceBase } from '@Src/shared/libs/services';
 
 class SiteServiceImpl implements SiteService {
   /**

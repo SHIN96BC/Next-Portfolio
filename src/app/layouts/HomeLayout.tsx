@@ -1,5 +1,5 @@
-import { Header } from '@Src/widgets/header/ui';
 import { SiteGnb } from '@Src/entities/site/model/client/gnb';
+import { Header } from '@Src/widgets/header/ui';
 
 interface Props {
   isLogin: boolean;

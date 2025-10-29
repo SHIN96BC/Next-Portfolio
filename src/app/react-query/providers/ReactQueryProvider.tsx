@@ -1,9 +1,9 @@
 'use client';
 
-import { PropsWithChildren, ReactNode } from 'react';
+import { getQueryClient } from '@Src/shared/libs/react-query/query-client';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { getQueryClient } from '@Src/shared/libs/react-query/query-client';
+import { PropsWithChildren, ReactNode } from 'react';
 
 /**
  * React Query Provider
@@ -11,9 +11,7 @@ import { getQueryClient } from '@Src/shared/libs/react-query/query-client';
  * @returns {React.ReactNode}
  * @constructor
  */
-export default function ReactQueryProvider({
-  children,
-}: PropsWithChildren): ReactNode {
+export default function ReactQueryProvider({ children }: PropsWithChildren): ReactNode {
   const queryClient = getQueryClient();
 
   return (

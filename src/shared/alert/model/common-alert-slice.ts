@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ThemeColorsType } from '@Src/shared/theme/model/colors';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface CommonAlertState {
   isShow?: boolean;
@@ -21,31 +21,16 @@ const commonAlertSlice = createSlice({
   name: 'commonAlert',
   initialState,
   reducers: {
-    showCommonAlert(
-      state: CommonAlertState,
-      action: PayloadAction<CommonAlertState>
-    ): CommonAlertState {
+    showCommonAlert(state: CommonAlertState, action: PayloadAction<CommonAlertState>): CommonAlertState {
       const newState = { ...state };
       newState.isShow = true;
       newState.messageHTML = action.payload.messageHTML;
-      newState.okBtnName = action.payload.okBtnName
-        ? action.payload.okBtnName
-        : undefined;
-      newState.okBtnColor = action.payload.okBtnColor
-        ? action.payload.okBtnColor
-        : undefined;
-      newState.okBtnCallback = action.payload.okBtnCallback
-        ? action.payload.okBtnCallback
-        : undefined;
-      newState.cancelBtnName = action.payload.cancelBtnName
-        ? action.payload.cancelBtnName
-        : undefined;
-      newState.cancelBtnColor = action.payload.cancelBtnColor
-        ? action.payload.cancelBtnColor
-        : undefined;
-      newState.cancelBtnCallback = action.payload.cancelBtnCallback
-        ? action.payload.cancelBtnCallback
-        : undefined;
+      newState.okBtnName = action.payload.okBtnName ? action.payload.okBtnName : undefined;
+      newState.okBtnColor = action.payload.okBtnColor ? action.payload.okBtnColor : undefined;
+      newState.okBtnCallback = action.payload.okBtnCallback ? action.payload.okBtnCallback : undefined;
+      newState.cancelBtnName = action.payload.cancelBtnName ? action.payload.cancelBtnName : undefined;
+      newState.cancelBtnColor = action.payload.cancelBtnColor ? action.payload.cancelBtnColor : undefined;
+      newState.cancelBtnCallback = action.payload.cancelBtnCallback ? action.payload.cancelBtnCallback : undefined;
 
       return newState;
     },

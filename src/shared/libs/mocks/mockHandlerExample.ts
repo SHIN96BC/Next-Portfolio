@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { http, HttpResponse } from 'msw';
+import { HttpResponse, http } from 'msw';
 
 // server handlers 예시
 const mockHandlerExample = [

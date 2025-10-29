@@ -1,7 +1,7 @@
 'use client';
 
-import { useCallback } from 'react';
 import { signOut } from 'next-auth/react';
+import { useCallback } from 'react';
 
 export default function LogoutBtn() {
   const handleLogout = useCallback(() => {

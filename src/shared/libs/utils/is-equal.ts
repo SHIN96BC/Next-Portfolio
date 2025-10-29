@@ -27,12 +27,7 @@ const isEqual = (value: unknown, other: unknown): boolean => {
     return true;
   }
 
-  if (
-    typeof value === 'object' &&
-    typeof other === 'object' &&
-    value &&
-    other
-  ) {
+  if (typeof value === 'object' && typeof other === 'object' && value && other) {
     const valueObj = value as Record<string, unknown>;
     const otherObj = value as Record<string, unknown>;
     const valueKeys = Object.keys(valueObj);
@@ -43,9 +38,7 @@ const isEqual = (value: unknown, other: unknown): boolean => {
     }
 
     return valueKeys.every(
-      (key) =>
-        Object.prototype.hasOwnProperty.call(otherObj, key) &&
-        isEqual(valueObj[key], otherObj[key])
+      (key) => Object.prototype.hasOwnProperty.call(otherObj, key) && isEqual(valueObj[key], otherObj[key])
     );
   }
 

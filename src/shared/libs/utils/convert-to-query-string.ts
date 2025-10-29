@@ -47,14 +47,8 @@ export interface QueryParamObject {
  * const queryString = convertToQueryString(data);
  * ```
  */
-export default function convertToQueryString<T extends QueryParamObject>(
-  data: T
-): string {
-  if (
-    !data ||
-    typeof data !== 'object' ||
-    (typeof data === 'object' && Object.keys(data).length < 1)
-  ) {
+export default function convertToQueryString<T extends QueryParamObject>(data: T): string {
+  if (!data || typeof data !== 'object' || (typeof data === 'object' && Object.keys(data).length < 1)) {
     return '';
   }
 
@@ -70,11 +64,9 @@ export default function convertToQueryString<T extends QueryParamObject>(
           });
         } else if (typeof item === 'object' && item !== null) {
           // 배열의 객체인 경우
-          Object.entries(item as QueryParamObject).forEach(
-            ([key, nestedValue]) => {
-              appendParams(`${prefix}[${index}][${key}]`, nestedValue);
-            }
-          );
+          Object.entries(item as QueryParamObject).forEach(([key, nestedValue]) => {
+            appendParams(`${prefix}[${index}][${key}]`, nestedValue);
+          });
         } else {
           // 배열의 원시 값인 경우
           params.append(`${prefix}[${index}]`, String(item));
@@ -82,11 +74,9 @@ export default function convertToQueryString<T extends QueryParamObject>(
       });
     } else if (typeof value === 'object' && value !== null) {
       // 객체인 경우
-      Object.entries(value as QueryParamObject).forEach(
-        ([key, nestedValue]) => {
-          appendParams(`${prefix}[${key}]`, nestedValue);
-        }
-      );
+      Object.entries(value as QueryParamObject).forEach(([key, nestedValue]) => {
+        appendParams(`${prefix}[${key}]`, nestedValue);
+      });
     } else {
       // 원시 값인 경우
       params.append(prefix, String(value));

@@ -1,8 +1,5 @@
+import { COOKIE_AGE, COOKIE_NAME } from '@Src/shared/libs/middleware/middleware-constants';
 import { NextRequest, NextResponse } from 'next/server';
-import {
-  COOKIE_AGE,
-  COOKIE_NAME,
-} from '@Src/shared/libs/middleware/middleware-constants';
 
 // 리디렉트 함수
 export default function redirectWithLang(request: NextRequest, lang: string) {

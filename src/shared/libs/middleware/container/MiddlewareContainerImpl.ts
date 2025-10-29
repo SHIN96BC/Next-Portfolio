@@ -1,7 +1,7 @@
-import { Middleware } from '@Src/shared/libs/middleware/middleware-type';
-import { MiddlewareContainer } from './MiddlewareContainer';
 import MiddlewareChain from '@Src/shared/libs/middleware/chain/MiddlewareChain';
 import MiddlewareChainImpl from '@Src/shared/libs/middleware/chain/MiddlewareChainImpl';
+import { Middleware } from '@Src/shared/libs/middleware/middleware-type';
+import { MiddlewareContainer } from './MiddlewareContainer';
 
 /**
  * 미들웨어를 등록하고 이름 기반으로 체인을 구성/해결하는 컨테이너 클래스
@@ -51,9 +51,7 @@ export class MiddlewareContainerImpl implements MiddlewareContainer {
    * @returns 매칭된 MiddlewareChain 인스턴스 or null
    */
   resolveByPath(path: string): MiddlewareChain | null {
-    const entry = Array.from(this.chains.entries()).find(([prefix]) =>
-      path.startsWith(prefix)
-    );
+    const entry = Array.from(this.chains.entries()).find(([prefix]) => path.startsWith(prefix));
     if (!entry) {
       return null;
     }

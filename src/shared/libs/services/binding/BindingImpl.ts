@@ -1,10 +1,5 @@
+import { BINDING_SCOPE, Binding, BindingScopeType, Constructor } from '@Src/shared/libs/services';
 import getBindingId from '@Src/shared/libs/services/binding/get-binding-id';
-import {
-  BINDING_SCOPE,
-  BindingScopeType,
-  Constructor,
-  Binding,
-} from '@Src/shared/libs/services';
 
 /**
  * Container Biding Class

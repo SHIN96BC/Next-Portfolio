@@ -1,10 +1,10 @@
 'use client';
 
-import { ReactNode, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { showCommonAlert } from '@Src/shared/alert/model/common-alert-slice';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
+import { ReactNode, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 export default function AuthGuard({ children }: { children: ReactNode }) {
   const router = useRouter();

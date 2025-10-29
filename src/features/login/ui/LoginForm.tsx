@@ -1,11 +1,11 @@
 'use client';
 
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { LoginSchemaType, loginSchema } from '@Src/features/login/model/schema';
+import { CommonInput } from '@Src/shared/input/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { loginSchema, LoginSchemaType } from '@Src/features/login/model/schema';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
-import { CommonInput } from '@Src/shared/input/ui';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 
 type Props = {
   isInterceptionPage?: boolean;
@@ -49,10 +49,7 @@ export default function LoginForm({ isInterceptionPage }: Props) {
       } else {
         setError('submit', {
           type: 'oneOf',
-          message:
-            result && typeof result.error === 'string'
-              ? result.error
-              : 'An unknown error occurred.',
+          message: result && typeof result.error === 'string' ? result.error : 'An unknown error occurred.',
         });
         setValue('password', '');
       }
@@ -64,16 +61,12 @@ export default function LoginForm({ isInterceptionPage }: Props) {
       <div>
         <div>EMAIL</div>
         <CommonInput {...register('email')} type="email" />
-        {errors.email && (
-          <p className="text-red-500 text-xs">{errors.email.message}</p>
-        )}
+        {errors.email && <p className="text-red-500 text-xs">{errors.email.message}</p>}
       </div>
       <div className="pt-3">
         <div>PW</div>
         <CommonInput {...register('password')} type="password" />
-        {errors.password && (
-          <p className="text-red-500 text-xs">{errors.password.message}</p>
-        )}
+        {errors.password && <p className="text-red-500 text-xs">{errors.password.message}</p>}
       </div>
       <div className="pt-3 flex justify-center">
         <button
@@ -84,11 +77,7 @@ export default function LoginForm({ isInterceptionPage }: Props) {
           <p className="w-full flex justify-center">Login</p>
         </button>
       </div>
-      {errors.submit && (
-        <div className="pt-3 text-red-500 text-xm text-center">
-          {errors.submit.message}
-        </div>
-      )}
+      {errors.submit && <div className="pt-3 text-red-500 text-xm text-center">{errors.submit.message}</div>}
     </form>
   );
 }

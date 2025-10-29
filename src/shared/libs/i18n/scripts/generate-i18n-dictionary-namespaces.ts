@@ -17,9 +17,7 @@ const filenames = fs
 
 const toEnumKey = (name: string) => name.toUpperCase();
 
-const entries = filenames
-  .map((name) => `  ${toEnumKey(name)}: '${name}',`)
-  .join('\n');
+const entries = filenames.map((name) => `  ${toEnumKey(name)}: '${name}',`).join('\n');
 
 const result = `/* eslint-disable */
 // ✅ 자동 생성된 파일입니다. 수동으로 수정하지 마세요.

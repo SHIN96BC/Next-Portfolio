@@ -1,37 +1,23 @@
-import Image from 'next/image';
-import fetchGnbSSR from '../_actions/fetchGnbSSR';
-import { getServerSession } from 'next-auth';
 import nextAuthOptions from '@Src/app/auth/config/next-auth';
 import HomeLayout from '@Src/app/layouts/HomeLayout';
 import { I18N_DICTIONARY_NAMESPACE, Locale } from '@Src/shared/libs/i18n';
+import Image from 'next/image';
+import { getServerSession } from 'next-auth';
 import getI18nTranslator from '../../src/shared/libs/i18n/utils/get-i18n-translator';
+import fetchGnbSSR from '../_actions/fetchGnbSSR';
 
-export default async function Home({
-  params,
-}: {
-  params: Promise<{ lang: Locale }>;
-}) {
+export default async function Home({ params }: { params: Promise<{ lang: Locale }> }) {
   const session = await getServerSession(nextAuthOptions);
   const gnbList = await fetchGnbSSR();
   const { lang } = await params;
-  const { dict } = await getI18nTranslator(
-    lang,
-    I18N_DICTIONARY_NAMESPACE.MAIN
-  );
+  const { dict } = await getI18nTranslator(lang, I18N_DICTIONARY_NAMESPACE.MAIN);
 
   return (
     <HomeLayout isLogin={!!session?.accessToken} gnbList={gnbList}>
       <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
         <h1>{dict.title}</h1>
         <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-          <Image
-            className="dark:invert"
-            src="/next.svg"
-            alt="Next.js logo"
-            width={180}
-            height={38}
-            priority
-          />
+          <Image className="dark:invert" src="/next.svg" alt="Next.js logo" width={180} height={38} priority />
           <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
             <li className="mb-2 tracking-[-.01em]">
               Get started by editing{' '}
@@ -40,9 +26,7 @@ export default async function Home({
               </code>
               .
             </li>
-            <li className="tracking-[-.01em]">
-              Save and see your changes instantly.
-            </li>
+            <li className="tracking-[-.01em]">Save and see your changes instantly.</li>
           </ol>
 
           <div className="flex gap-4 items-center flex-col sm:flex-row">
@@ -52,13 +36,7 @@ export default async function Home({
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image
-                className="dark:invert"
-                src="/vercel.svg"
-                alt="Vercel logomark"
-                width={20}
-                height={20}
-              />
+              <Image className="dark:invert" src="/vercel.svg" alt="Vercel logomark" width={20} height={20} />
               Deploy now
             </a>
             <a
@@ -78,13 +56,7 @@ export default async function Home({
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image
-              aria-hidden
-              src="/file.svg"
-              alt="File icon"
-              width={16}
-              height={16}
-            />
+            <Image aria-hidden src="/file.svg" alt="File icon" width={16} height={16} />
             Learn
           </a>
           <a
@@ -93,13 +65,7 @@ export default async function Home({
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image
-              aria-hidden
-              src="/window.svg"
-              alt="Window icon"
-              width={16}
-              height={16}
-            />
+            <Image aria-hidden src="/window.svg" alt="Window icon" width={16} height={16} />
             Examples
           </a>
           <a
@@ -108,13 +74,7 @@ export default async function Home({
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image
-              aria-hidden
-              src="/globe.svg"
-              alt="Globe icon"
-              width={16}
-              height={16}
-            />
+            <Image aria-hidden src="/globe.svg" alt="Globe icon" width={16} height={16} />
             Go to nextjs.org →
           </a>
         </footer>

@@ -16,9 +16,7 @@ const localeDirs = fs
   .filter((dirent) => dirent.isDirectory())
   .map((dirent) => dirent.name);
 
-const entries = localeDirs
-  .map((locale) => `  ${locale.toUpperCase()}: '${locale}',`)
-  .join('\n');
+const entries = localeDirs.map((locale) => `  ${locale.toUpperCase()}: '${locale}',`).join('\n');
 
 const result = `/* eslint-disable */
 // ✅ 이 파일은 자동 생성된 파일입니다. 수동으로 수정하지 마세요.
