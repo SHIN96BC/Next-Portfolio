@@ -28,19 +28,40 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## 관련 프로젝트 전체 구조
 
+```
+[Clients]
+ ├─ User FE (Next.js, REST)
+ └─ Admin FE (Next.js, GraphQL)
+
+[Edge]
+ └─ API Gateway / Edge (Auth, Rate limit, WAF, Routing)
+
+[BFF Layer]
+ ├─ User BFF (REST)
+ └─ Admin BFF (GraphQL)
+
+[Services]
+ └─ MSA (Spring Boot, 각 도메인별 서비스) → 각자 DB (소유권 분리)
+```
+
 ### FE
 
-- Next.js(app router) Client Web
-  - Full Responsive Web Design
-  - FSD Pattern
-- Next.js(app router) Admin Web
-  - Full Responsive Web Design
-  - FSD Pattern
+- Next.js(app router) Client Web(REST API)
+    - Full Responsive Web Design
+    - FSD Pattern
+    - 페이지 로딩/캐싱/엣지 최적화 쉽고, CDN과 궁합 좋음.
+- Next.js(app router) Admin Web(GraphQL)
+    - Full Responsive Web Design
+    - FSD Pattern
+    - 화면이 데이터 탐색적이고 테이블/필터/정렬/부분 갱신이 많아 GraphQL이 유리.
 - Flutter Client App
 
 
 ### BE
-
+- API Gateway/Edge(NGINX/Envoy/API Gateway/AWS ALB+WAF 등)
+  - AuthN/Token 검증, Rate limit, WAF, IP 제어, 요청 라우팅 표준화
+  - 공통 헤더(요청 ID, trace) 주입
+  - Canary/Blue-Green 라우팅 쉬움
 - Spring Boot 3.x.x(Gradle)
   - MSA Architecture
   - Gateway
