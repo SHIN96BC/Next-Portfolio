@@ -1,6 +1,6 @@
-import MiddlewareChain from '@Src/shared/libs/middleware/chain/MiddlewareChain';
-import { Middleware } from '@Src/shared/libs/middleware/middleware-type';
+import { Middleware } from '@Src/shared/libs/middleware-container';
 import { NextRequest, NextResponse } from 'next/server';
+import MiddlewareChain from './MiddlewareChain';
 
 /**
  * 등록된 미들웨어 배열을 순차적으로 실행하는 체인 클래스

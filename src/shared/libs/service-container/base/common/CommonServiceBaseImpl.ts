@@ -1,5 +1,5 @@
-import { CommonServiceBase, HTTPInstance } from '@Src/shared/libs/services/base/common/CommonServiceBase';
 import convertToQueryString, { QueryParamObject } from '@Src/shared/libs/utils/convert-to-query-string';
+import { CommonServiceBase, HTTPInstance } from './CommonServiceBase';
 
 /**
  * API Request Service Base

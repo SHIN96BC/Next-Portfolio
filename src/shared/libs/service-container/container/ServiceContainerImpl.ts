@@ -1,4 +1,10 @@
-import { BatchBinding, BINDING_SCOPE, Binding, BindingImpl, ServiceContainer } from '@Src/shared/libs/services';
+import BaseBinding from '../binding/BaseBinding';
+import BaseBindingImpl from '../binding/BaseBindingImpl';
+import Binding from '../binding/Binding';
+import BindingImpl from '../binding/BindingImpl';
+import { BINDING_SCOPE } from '../service-constants';
+import { BatchBaseBinding, BatchBinding } from '../service-type';
+import ServiceContainer from './ServiceContainer';
 
 /**
  * API Service IoC Container
@@ -10,7 +16,7 @@ class ServiceContainerImpl implements ServiceContainer {
    * @type {Map<symbol, Binding<any>>}
    * @private
    */
-  private readonly servicesBaseBind: Map<symbol, Binding<any>> = new Map<symbol, Binding<any>>();
+  private readonly servicesBaseBind: Map<symbol, BaseBinding<any>> = new Map<symbol, BaseBinding<any>>();
 
   /**
    * Service Instance Map
@@ -32,7 +38,7 @@ class ServiceContainerImpl implements ServiceContainer {
    * Bind Service
    * 서비스 등록
    * @param {symbol} name
-   * @returns {Binding<T>}
+   * @returns {Binding}
    */
   public bind<T>(name: symbol): Binding<T> {
     if (!this.isBound(name)) {
@@ -50,11 +56,11 @@ class ServiceContainerImpl implements ServiceContainer {
    * Bind Service Base
    * 서비스 베이스 등록
    * @param {symbol} name
-   * @returns {Binding<T>}
+   * @returns {BaseBinding}
    */
-  public baseBind<T>(name: symbol): Binding<T> {
+  public baseBind<T>(name: symbol): BaseBinding<T> {
     if (!this.isBaseBound(name)) {
-      const binding = new BindingImpl<T>(name);
+      const binding = new BaseBindingImpl<T>(name);
       this.servicesBaseBind.set(name, binding);
 
       return binding;
@@ -92,6 +98,23 @@ class ServiceContainerImpl implements ServiceContainer {
         }
 
         binding.build();
+      }
+    });
+  }
+
+  /**
+   * Batch Bind Services base
+   * 서비스 베이스 리스트 등록
+   * @param {BatchBaseBinding[]} list
+   */
+  public batchBaseBind(list: BatchBaseBinding[]) {
+    list.forEach((batch) => {
+      if (!this.isBaseBound(batch.name)) {
+        this.baseBind(batch.name);
+        const binding = new BindingImpl(batch.name);
+        this.servicesBaseBind.set(batch.name, binding);
+
+        binding.to(batch.target).inSingletonScope().build();
       }
     });
   }

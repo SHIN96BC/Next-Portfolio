@@ -1,14 +1,14 @@
-import { BINDING_SCOPE, Binding, BindingScopeType, Constructor } from '@Src/shared/libs/services';
-import getBindingId from '@Src/shared/libs/services/binding/get-binding-id';
+import { BaseBinding, BINDING_SCOPE, BindingScopeType, Constructor } from '@Src/shared/libs/service-container';
+import getBindingId from './get-binding-id';
 
 /**
- * Container Biding Class
- * 컨테이너 등록에 사용되는 클래스
+ * Container Base Biding Class
+ * 컨테이너 Service Base 등록에 사용되는 클래스
  */
-export default class BindingImpl<T> implements Binding<T> {
+export default class BaseBindingImpl<T> implements BaseBinding<T> {
   /**
-   * Container ID
-   * 컨테이너 번호
+   * Binding ID
+   * 바인딩 번호
    * @type {number}
    */
   public id: number;
@@ -19,13 +19,6 @@ export default class BindingImpl<T> implements Binding<T> {
    * @type {symbol}
    */
   public readonly name: symbol;
-
-  /**
-   * Base Name
-   * 사용할 베이스 이름
-   * @type {symbol | undefined}
-   */
-  public baseName: symbol | undefined;
 
   /**
    * Instance Scope
@@ -69,20 +62,15 @@ export default class BindingImpl<T> implements Binding<T> {
   /**
    * Get New Target Instance
    * 새로운 타겟 인스턴스 생성
-   * @param base
    * @returns {T}
    * @private
    */
-  private getNewInstance(base?: any): T {
+  private getNewInstance(): T {
     if (!this.ready) {
       throw new Error(`Binding is not build`);
     }
 
     if (this.Target) {
-      if (base) {
-        return new this.Target(base);
-      }
-
       return new this.Target();
     }
 
@@ -92,13 +80,12 @@ export default class BindingImpl<T> implements Binding<T> {
   /**
    * Get Target Instance
    * 타겟 인스턴스 가져오기
-   * @param base
    * @returns {T}
    */
-  public getInstance(base?: any): T {
+  public getInstance(): T {
     if (this.scope === BINDING_SCOPE.SINGLETON) {
       if (!this.instance) {
-        this.instance = this.getNewInstance(base);
+        this.instance = this.getNewInstance();
       }
 
       return this.instance;
@@ -108,7 +95,7 @@ export default class BindingImpl<T> implements Binding<T> {
       this.instance = null;
     }
 
-    return this.getNewInstance(base);
+    return this.getNewInstance();
   }
 
   /**
@@ -149,18 +136,6 @@ export default class BindingImpl<T> implements Binding<T> {
    */
   public to(target: Constructor<T>): this {
     this.Target = target;
-
-    return this;
-  }
-
-  /**
-   * Set Target Class use Base Name
-   * 타켓 클래스에 사용할 베이스 이름 설정
-   * @param {symbol} name
-   * @returns {this}
-   */
-  public base(name: symbol): this {
-    this.baseName = name;
 
     return this;
   }

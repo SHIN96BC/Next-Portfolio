@@ -1,6 +1,6 @@
 // 언어 결정 함수
 
-import { COOKIE_NAME, defaultLocale, supportedLocales } from '@Src/shared/libs/middleware/middleware-constants';
+import { COOKIE_NAME, defaultLocale, supportedLocales } from '@Src/shared/libs/middleware-container';
 import { NextRequest } from 'next/server';
 
 export default function getPreferredLang(request: NextRequest): string {

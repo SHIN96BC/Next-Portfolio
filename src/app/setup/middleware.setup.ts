@@ -1,5 +1,4 @@
-import { MiddlewareContainerImpl } from '@Src/shared/libs/middleware/container/MiddlewareContainerImpl';
-import { authMiddleHandler, loggerMiddleHandler } from '@Src/shared/libs/middleware/handlers';
+import { authMiddleHandler, loggerMiddleHandler, MiddlewareContainerImpl } from '@Src/shared/libs/middleware-container';
 
 export const middlewareContainer = new MiddlewareContainerImpl()
   .use('auth', authMiddleHandler)
