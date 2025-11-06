@@ -1,4 +1,4 @@
-import { supportedLocales } from '@Src/shared/libs/middleware/middleware-constants';
+import { supportedLocales } from '@Src/shared/libs/middleware-container';
 
 /**
  * 경로에서 언어(locale) prefix를 제거하는 함수

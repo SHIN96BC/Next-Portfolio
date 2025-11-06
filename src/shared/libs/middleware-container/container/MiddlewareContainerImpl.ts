@@ -1,7 +1,5 @@
-import MiddlewareChain from '@Src/shared/libs/middleware/chain/MiddlewareChain';
-import MiddlewareChainImpl from '@Src/shared/libs/middleware/chain/MiddlewareChainImpl';
-import { Middleware } from '@Src/shared/libs/middleware/middleware-type';
-import { MiddlewareContainer } from './MiddlewareContainer';
+import { Middleware, MiddlewareChain, MiddlewareChainImpl } from '@Src/shared/libs/middleware-container';
+import MiddlewareContainer from './MiddlewareContainer';
 
 /**
  * 미들웨어를 등록하고 이름 기반으로 체인을 구성/해결하는 컨테이너 클래스

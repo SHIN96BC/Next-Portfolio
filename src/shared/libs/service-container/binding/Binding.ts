@@ -1,11 +1,11 @@
-import { BindingScopeType, Constructor } from '@Src/shared/libs/services';
+import { BindingScopeType, Constructor } from '@Src/shared/libs/service-container';
 
 export default interface Binding<T> {
   id: number;
   readonly name: symbol;
   baseName?: symbol;
   scope: BindingScopeType;
-  getInstance(base?: any): T;
+  getInstance(base?: unknown): T;
   inTransientScope(): this;
   inSingletonScope(): this;
   inRequestScope(): this;

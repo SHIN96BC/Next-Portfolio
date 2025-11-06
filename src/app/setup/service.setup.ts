@@ -1,16 +1,20 @@
 import { SiteServiceImpl } from '@Src/entities/site/api';
 import {
+  BatchBaseBinding,
   BatchBinding,
   BINDING_SCOPE,
-  CommonServiceBase,
   CommonServiceBaseImpl,
-  FileServiceBase,
   FileServiceBaseImpl,
   SERVICE_BASE_NAME,
   SERVICE_NAME,
   ServiceContainer,
   ServiceContainerImpl,
-} from '@Src/shared/libs/services';
+} from '@Src/shared/libs/service-container';
+
+const serviceBatchBaseList: BatchBaseBinding[] = [
+  { name: SERVICE_BASE_NAME.COMMON_BASE, target: CommonServiceBaseImpl },
+  { name: SERVICE_BASE_NAME.FILE_BASE, target: FileServiceBaseImpl },
+];
 
 const serviceBatchList: BatchBinding[] = [
   {
@@ -31,28 +35,30 @@ const serviceContainer: ServiceContainer = new ServiceContainerImpl();
 // region - Dependency Injection
 /// ///////////////////////////////////////////////////////////////////////////////////////////////
 
-// * Bind Service Base
-serviceContainer
-  .baseBind<CommonServiceBase>(SERVICE_BASE_NAME.COMMON_BASE)
-  .to(CommonServiceBaseImpl)
-  .inSingletonScope()
-  .build();
+/** * Bind Service Base */
+// serviceContainer
+//   .baseBind<CommonServiceBase>(SERVICE_BASE_NAME.COMMON_BASE)
+//   .to(CommonServiceBaseImpl)
+//   .inSingletonScope()
+//   .build();
 
-serviceContainer
-  .baseBind<FileServiceBase>(SERVICE_BASE_NAME.FILE_BASE)
-  .to(FileServiceBaseImpl)
-  .inSingletonScope()
-  .build();
+// serviceContainer
+//   .baseBind<FileServiceBase>(SERVICE_BASE_NAME.FILE_BASE)
+//   .to(FileServiceBaseImpl)
+//   .inSingletonScope()
+//   .build();
 
-// * Bind Service
+/** * Bind Service */
 // service 하나씩 수동 등록
 // serviceContainer
-//   .bind<TestService>(SERVICE_NAME.TEST)
-//   .to(TestServiceImpl)
+//   .bind<SiteService>(SERVICE_NAME.SITE)
+//   .to(SiteServiceImpl)
 //   .base(SERVICE_BASE_NAME.COMMON_BASE)
 //   .inSingletonScope()
 //   .build();
 
+// service base 한번에 batch 등록
+serviceContainer.batchBaseBind(serviceBatchBaseList ?? []);
 // service 한번에 batch 등록
 serviceContainer.batchBind(serviceBatchList ?? []);
 

@@ -1,4 +1,4 @@
-import { COOKIE_AGE, COOKIE_NAME } from '@Src/shared/libs/middleware/middleware-constants';
+import { COOKIE_AGE, COOKIE_NAME } from '@Src/shared/libs/middleware-container';
 import { NextRequest, NextResponse } from 'next/server';
 
 // 리디렉트 함수

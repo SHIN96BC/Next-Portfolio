@@ -104,5 +104,134 @@
   "assist": {
     "enabled": true,
     "actions": { "source": { "organizeImports": "on" } }
-  }
+  },
+  "overrides": [
+    {
+      "includes": ["src/shared/**", "!src/shared/libs/**", "!@Src/shared/libs/**"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "patterns": [
+                  {
+                    "group": [
+                      "@Src/app/**",
+                      "@Src/pages/**",
+                      "@Src/widgets/**",
+                      "@Src/features/**",
+                      "@Src/entities/**",
+                      "../app/**",
+                      "../pages/**",
+                      "../widgets/**",
+                      "../features/**",
+                      "../entities/**"
+                    ],
+                    "message": "🚫 shared 레이어에서는 app/pages/widgets/features/entities 를 import 할 수 없습니다."
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "includes": ["src/entities/**"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "patterns": [
+                  {
+                    "group": [
+                      "@Src/app/**",
+                      "@Src/pages/**",
+                      "@Src/widgets/**",
+                      "@Src/features/**",
+                      "../app/**",
+                      "../pages/**",
+                      "../widgets/**",
+                      "../features/**"
+                    ],
+                    "message": "🚫 entities 레이어에서는 app/pages/widgets/features 를 import 할 수 없습니다."
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "includes": ["src/features/**"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "patterns": [
+                  {
+                    "group": [
+                      "@Src/app/**",
+                      "@Src/pages/**",
+                      "@Src/widgets/**",
+                      "../app/**",
+                      "../pages/**",
+                      "../widgets/**"
+                    ],
+                    "message": "🚫 features 레이어에서는 app/pages/widgets 를 import 할 수 없습니다."
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "includes": ["src/widgets/**"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "patterns": [
+                  {
+                    "group": ["@Src/app/**", "@Src/pages/**", "../app/**", "../pages/**"],
+                    "message": "🚫 widgets 레이어에서는 app/pages 를 import 할 수 없습니다."
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "includes": ["src/pages/**"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "patterns": [
+                  {
+                    "group": ["@Src/app/**", "../app/**"],
+                    "message": "🚫 pages 레이어에서는 app 를 import 할 수 없습니다."
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
 }

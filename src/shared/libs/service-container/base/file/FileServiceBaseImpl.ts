@@ -1,4 +1,4 @@
-import { FileInstance, FileServiceBase } from '@Src/shared/libs/services/base/file/FileServiceBase';
+import { FileInstance, FileServiceBase } from './FileServiceBase';
 
 /**
  * API File Request Base
