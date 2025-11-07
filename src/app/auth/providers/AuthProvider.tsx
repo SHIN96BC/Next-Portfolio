@@ -1,8 +1,8 @@
 'use client';
 
-import { serviceContainer } from '@Src/shared/libs/service-container';
 import { useSession } from 'next-auth/react';
 import { ReactNode, useEffect } from 'react';
+import { serviceContainer } from '../../../../libs/service-container';
 
 /**
  * Auth Provider

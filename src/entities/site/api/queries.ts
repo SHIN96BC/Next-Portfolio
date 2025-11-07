@@ -1,7 +1,7 @@
 import { SiteService } from '@Src/entities/site/api';
 import { SiteGnb } from '@Src/entities/site/model/client/gnb';
 import mapServerGnbToClient from '@Src/entities/site/model/mapper/map-server-gnb-to-client';
-import { CommonRes, SERVICE_NAME, serviceContainer } from '@Src/shared/libs/service-container';
+import { CommonRes, SERVICE_NAME, serviceContainer } from '../../../../libs/service-container';
 
 /**
  * React Query Keys Object

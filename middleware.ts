@@ -1,4 +1,5 @@
 import { middlewareContainer } from '@Src/app/setup/middleware.setup';
+import { NextRequest, NextResponse } from 'next/server';
 import {
   COOKIE_AGE,
   COOKIE_NAME,
@@ -6,8 +7,7 @@ import {
   redirectWithLang,
   stripLocalePrefix,
   supportedLocales,
-} from '@Src/shared/libs/middleware-container';
-import { NextRequest, NextResponse } from 'next/server';
+} from './libs/middleware-container';
 
 export async function middleware(request: NextRequest) {
   if (!request.url) {

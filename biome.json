@@ -9,7 +9,7 @@
   "vcs": { "enabled": false, "clientKind": "git", "useIgnoreFile": false },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["**", "!**/public", "!**/node_modules", "!**/.next", "!**/dist", "!**/build"],
+    "includes": ["**", "!**/public", "!**/node_modules", "!**/.next", "!**/dist", "!**/build", "!**/auto-gen/**"],
     "maxSize": 41943040
   },
   "formatter": {
@@ -49,6 +49,7 @@
       "correctness": {
         "noInvalidUseBeforeDeclaration": "off",
         "noUndeclaredDependencies": "off",
+        "noUnusedImports": "error",
         "noUnusedVariables": "off",
         "useExhaustiveDependencies": "off",
         "useHookAtTopLevel": "off"
@@ -78,9 +79,7 @@
       "**",
       "**/dist",
       "**/node_modules",
-      "**/examples",
       "**/scripts",
-      "packages/common/redux/endpoints",
       "**/*.test.ts",
       "**/*.test.tsx",
       "**/*.spec.ts",
@@ -107,7 +106,7 @@
   },
   "overrides": [
     {
-      "includes": ["src/shared/**", "!src/shared/libs/**", "!@Src/shared/libs/**"],
+      "includes": ["src/shared/**", "!src/shared/config/**", "!@Src/shared/config/**"],
       "linter": {
         "rules": {
           "style": {
@@ -225,6 +224,37 @@
                   {
                     "group": ["@Src/app/**", "../app/**"],
                     "message": "🚫 pages 레이어에서는 app 를 import 할 수 없습니다."
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "includes": ["root/libs/**/*.{ts,tsx,js,jsx}"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "patterns": [
+                  {
+                    "group": ["../**", "../../**", "../../../**", "../../../../**"],
+                    "message": "root/libs 밖 상대경로 import 금지"
+                  },
+                  {
+                    "group": [
+                      "@Src/app/**",
+                      "@Src/pages/**",
+                      "@Src/features/**",
+                      "@Src/entities/**",
+                      "@Src/widgets/**",
+                      "@Src/shared/**"
+                    ],
+                    "message": "libs에서는 다른 레이어 import 금지"
                   }
                 ]
               }

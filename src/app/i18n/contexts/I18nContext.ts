@@ -1,4 +1,4 @@
-import { Locale } from '@Src/shared/libs/i18n';
+import { Locale } from '@Src/shared/config/i18n';
 import { createContext } from 'react';
 
 type I18nContextType = {
