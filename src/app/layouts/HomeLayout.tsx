@@ -1,5 +1,5 @@
 import { SiteGnb } from '@Src/entities/site/model/client/gnb';
-import { Header } from '@Src/widgets/header/ui';
+import { HomeHeader } from '@Src/widgets/header/ui';
 
 interface Props {
   isLogin: boolean;
@@ -10,7 +10,7 @@ interface Props {
 export default function HomeLayout({ isLogin, gnbList, children }: Props) {
   return (
     <main>
-      <Header isLogin={isLogin} gnbList={gnbList} />
+      <HomeHeader isLogin={isLogin} gnbList={gnbList} />
       {children}
     </main>
   );

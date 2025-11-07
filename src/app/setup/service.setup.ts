@@ -9,7 +9,7 @@ import {
   SERVICE_NAME,
   ServiceContainer,
   ServiceContainerImpl,
-} from '@Src/shared/libs/service-container';
+} from '../../../libs/service-container';
 
 const serviceBatchBaseList: BatchBaseBinding[] = [
   { name: SERVICE_BASE_NAME.COMMON_BASE, target: CommonServiceBaseImpl },

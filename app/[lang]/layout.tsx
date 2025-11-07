@@ -8,9 +8,9 @@ import MockServerInit from '@Src/app/mock/inits/MockServerInit';
 import ReactQueryProvider from '@Src/app/react-query/providers/ReactQueryProvider';
 import StoreProvider from '@Src/app/store/providers/StoreProvider';
 import { getServerSession } from 'next-auth';
-import '@Src/shared/libs/mocks/mock-server.setup';
+import '@Src/shared/config/mock/mock-server.setup';
 import I18nProvider from '@Src/app/i18n/providers/I18nProvider';
-import { Locale } from '@Src/shared/libs/i18n';
+import { Locale } from '@Src/shared/config/i18n';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -30,11 +30,11 @@ export const metadata: Metadata = {
 export default async function RootLayout({
   children,
   params,
-  authModal,
+  interceptionModal,
 }: Readonly<{
   children: React.ReactNode;
   params: Promise<{ lang: Locale }>;
-  authModal: React.ReactNode;
+  interceptionModal: React.ReactNode;
 }>) {
   const session = await getServerSession(nextAuthOptions);
   const { lang } = await params;
@@ -49,7 +49,7 @@ export default async function RootLayout({
                 <MockServerInit>
                   <I18nProvider locale={lang}>
                     {children}
-                    {authModal}
+                    {interceptionModal}
                   </I18nProvider>
                 </MockServerInit>
               </AuthProvider>
