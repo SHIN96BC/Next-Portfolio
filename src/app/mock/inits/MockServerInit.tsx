@@ -24,7 +24,7 @@ export default function MockServerInit({ children }: { children: ReactNode }) {
       if (typeof window !== 'undefined') {
         const { mockWorker } = await import('@Src/shared/config/mock/mock-browser.setup');
         await mockWorker.start({ onUnhandledRequest: 'warn' });
-        console.log('mockWorker.start()');
+        console.info('mockWorker.start()');
         setWorkerStarted(true);
       }
     };

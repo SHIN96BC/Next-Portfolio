@@ -1,5 +1,10 @@
-import { Middleware, MiddlewareChain, MiddlewareChainImpl } from '../index';
+import MiddlewareChain from '@Libs/middleware-container/chain/MiddlewareChain';
+import MiddlewareChainImpl from '@Libs/middleware-container/chain/MiddlewareChainImpl';
+import { Middleware, MiddlewareChainOption, MiddlewareChainValue } from '@Libs/middleware-container/middleware-type';
+import { mergeUniquePreserveOrder } from '@Libs/utils/merge-unique-preserve-order';
 import MiddlewareContainer from './MiddlewareContainer';
+
+const globalChainName = 'Global';
 
 /**
  * 미들웨어를 등록하고 이름 기반으로 체인을 구성/해결하는 컨테이너 클래스
@@ -9,7 +14,7 @@ export class MiddlewareContainerImpl implements MiddlewareContainer {
   private registry = new Map<string, Middleware>();
 
   // 체인 이름과 그에 속한 미들웨어 이름 목록
-  private chains = new Map<string, string[]>();
+  private chains = new Map<string, MiddlewareChainValue>();
 
   /**
    * 미들웨어 등록 메서드
@@ -26,10 +31,21 @@ export class MiddlewareContainerImpl implements MiddlewareContainer {
    * 여러 미들웨어를 조합해서 체인을 구성하는 메서드
    * @param name - 체인 이름
    * @param middlewareNames - 해당 체인에 포함될 미들웨어 이름 목록
+   * @param options{MiddlewareChainOption} - 해당 체인에 적용할 옵션
    * @returns this (체이닝 가능)
    */
-  compose(name: string, middlewareNames: string[]) {
-    this.chains.set(name, middlewareNames);
+  compose(name: string, middlewareNames: string[], options?: MiddlewareChainOption) {
+    this.chains.set(name, { values: middlewareNames, options });
+    return this;
+  }
+
+  /**
+   * 여러 미들웨어를 조합해서 체인을 구성하는 메서드(모든 상황에 실행되어야 하는 미들웨어)
+   * @param middlewareNames - 해당 체인에 포함될 미들웨어 이름 목록
+   * @returns this (체이닝 가능)
+   */
+  composeGlobal(middlewareNames: string[]) {
+    this.chains.set(globalChainName, { values: middlewareNames });
     return this;
   }
 
@@ -38,9 +54,15 @@ export class MiddlewareContainerImpl implements MiddlewareContainer {
    * @param name - 체인 이름
    * @returns 실행 가능한 MiddlewareChain 인스턴스
    */
-  resolve(name: string): MiddlewareChain {
-    const mws = this.chains.get(name)?.map((n) => this.registry.get(n)!);
-    return new MiddlewareChainImpl(mws ?? []);
+  resolve(name: string): MiddlewareChain | null {
+    const middlewares = this.chains.get(name)?.values?.map((n) => this.registry.get(n)!) ?? [];
+    const globalMiddlewares = this.chains.get(globalChainName)?.values?.map((n) => this.registry.get(n)!) ?? [];
+
+    const combined = mergeUniquePreserveOrder<Middleware>([globalMiddlewares, middlewares]);
+
+    if (combined.length === 0) return null;
+
+    return new MiddlewareChainImpl(combined);
   }
 
   /**
@@ -49,11 +71,24 @@ export class MiddlewareContainerImpl implements MiddlewareContainer {
    * @returns 매칭된 MiddlewareChain 인스턴스 or null
    */
   resolveByPath(path: string): MiddlewareChain | null {
-    const entry = Array.from(this.chains.entries()).find(([prefix]) => path.startsWith(prefix));
-    if (!entry) {
-      return null;
-    }
+    const entry = Array.from(this.chains.entries()).find(([prefix, value]) => {
+      const matchType = value?.options?.matchType ?? 'exact';
 
-    return this.resolve(entry[0]); // 해당 prefix로 resolve
+      switch (matchType) {
+        case 'endsWith':
+          return path.endsWith(prefix);
+        case 'startsWith':
+          return path.startsWith(prefix);
+        case 'includes':
+          return path.includes(prefix);
+        case 'exact':
+        default:
+          return path === prefix;
+      }
+    });
+
+    const name = entry && Array.isArray(entry) && entry.length > 0 ? entry[0] : '';
+
+    return this.resolve(name); // 해당 prefix로 resolve
   }
 }

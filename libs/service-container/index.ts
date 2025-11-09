@@ -1,4 +1,3 @@
-export { serviceContainer } from '@Src/app/setup/service.setup';
 export type { CommonServiceBase } from './base/common/CommonServiceBase';
 export { default as CommonServiceBaseImpl } from './base/common/CommonServiceBaseImpl';
 export type { FileServiceBase } from './base/file/FileServiceBase';

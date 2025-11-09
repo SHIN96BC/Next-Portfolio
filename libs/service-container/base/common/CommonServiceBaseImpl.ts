@@ -1,4 +1,5 @@
-import convertToQueryString, { QueryParamObject } from '../../../utils/convert-to-query-string';
+import HttpError from '@Libs/service-container/error/HttpError';
+import convertToQueryString, { QueryParamObject } from '@Libs/utils/convert-to-query-string';
 import { CommonServiceBase, HTTPInstance } from './CommonServiceBase';
 
 /**
@@ -58,7 +59,6 @@ class CommonServiceBaseImpl implements CommonServiceBase {
    * @param {string} token
    */
   public setToken(token: string): void {
-    console.log('CommonServiceBaseImpl.setToken = ', token);
     this.token = token;
   }
 
@@ -68,6 +68,50 @@ class CommonServiceBaseImpl implements CommonServiceBase {
    */
   public getToken(): string | undefined {
     return this.token;
+  }
+
+  /**
+   * 응답 본문을 안전하게 파싱
+   * - JSON 이면 json()
+   * - 그 외면 text()
+   * - 204/304/Content-Length:0 등 본문 없음도 대비
+   */
+  private async safeParseBody(response: Response): Promise<unknown | undefined> {
+    const contentLength = response.headers.get('content-length');
+    const contentType = response.headers.get('content-type') || '';
+
+    // 본문이 없을 수 있는 상태들
+    if (
+      response.status === 204 || // No Content
+      response.status === 304 || // Not Modified
+      contentLength === '0'
+    ) {
+      return undefined;
+    }
+
+    // 스트림을 이미 소비했는지 방어
+    if ((response as any).bodyUsed) return undefined;
+
+    // JSON 우선
+    if (contentType.includes('application/json')) {
+      try {
+        return await response.json();
+      } catch {
+        // JSON이라고 왔는데 파싱 실패 → 텍스트로 한번 더 시도
+        try {
+          return await response.text();
+        } catch {
+          return undefined;
+        }
+      }
+    }
+
+    // 그 외 컨텐츠는 텍스트로
+    try {
+      return await response.text();
+    } catch {
+      return undefined;
+    }
   }
 
   /**
@@ -100,8 +144,6 @@ class CommonServiceBaseImpl implements CommonServiceBase {
         ...config?.headers,
       };
 
-      console.log('this.token = ', this.token);
-
       if (this.token) {
         headers.Authorization = `Bearer ${this.token}`;
       }
@@ -120,10 +162,22 @@ class CommonServiceBaseImpl implements CommonServiceBase {
       });
 
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        const body = await this.safeParseBody(response);
+
+        throw new HttpError({
+          message: `[${response.status}] ${response.statusText} - ${reqUrl}`,
+          status: response.status,
+          statusText: response.statusText,
+          url: this.baseURL + reqUrl,
+          headers: response.headers,
+          body,
+        });
       }
 
-      return await response.json();
+      // OK인 경우에도 JSON이 아닐 수 있으므로 안전 파싱
+      const parsed = await this.safeParseBody(response);
+
+      return parsed as R;
     } catch (error) {
       console.error('Error:', error);
       throw error;

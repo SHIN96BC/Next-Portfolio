@@ -1,6 +1,6 @@
+import { isEqual } from '@Libs/utils';
 import { getQueryClient } from '@Src/shared/config/react-query/query-client';
 import { dehydrate, QueryKey, QueryState } from '@tanstack/react-query';
-import isEqual from '../../../../libs/utils/is-equal';
 
 type UnwrapPromise<T> = T extends Promise<infer U> ? U : T;
 
@@ -15,15 +15,10 @@ interface DehydratedQueryExtended<TData = unknown, TError = unknown> {
 
 /* getDehydratedQuery는 서버에서 데이터를 prefetching하고 dehydrate한 결과를 return 하도록 구성(SSR) */
 export async function getDehydratedQuery<Q extends QueryProps>({ queryKey, queryFn }: Q) {
-  console.log('getDehydratedQuery1');
-
   const queryClient = getQueryClient();
-
-  console.log('queryClient = ', queryClient);
 
   try {
     const existingData = queryClient.getQueryData(queryKey);
-    console.log('existingData = ', existingData);
 
     if (!existingData) {
       await queryClient.prefetchQuery({ queryKey, queryFn });
@@ -33,10 +28,7 @@ export async function getDehydratedQuery<Q extends QueryProps>({ queryKey, query
     return null; // 에러가 발생하면 null 반환
   }
 
-  console.log('getDehydratedQuery2');
-
   const { queries } = dehydrate(queryClient);
-  console.log('dehydrate(queryClient) = ', dehydrate(queryClient));
   const [dehydratedQuery] = queries.filter((query) => isEqual(query.queryKey, queryKey));
 
   return dehydratedQuery as DehydratedQueryExtended<UnwrapPromise<ReturnType<Q['queryFn']>>>;

@@ -1,4 +1,3 @@
-import { SiteServiceImpl } from '@Src/entities/site/api';
 import {
   BatchBaseBinding,
   BatchBinding,
@@ -9,7 +8,8 @@ import {
   SERVICE_NAME,
   ServiceContainer,
   ServiceContainerImpl,
-} from '../../../libs/service-container';
+} from '@Libs/service-container';
+import { SiteServiceImpl } from '@Src/entities/site/api';
 
 const serviceBatchBaseList: BatchBaseBinding[] = [
   { name: SERVICE_BASE_NAME.COMMON_BASE, target: CommonServiceBaseImpl },

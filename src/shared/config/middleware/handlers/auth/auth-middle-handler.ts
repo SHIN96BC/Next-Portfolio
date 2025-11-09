@@ -1,5 +1,5 @@
+import { Middleware, NextHandler } from '@Libs/middleware-container';
 import { NextRequest, NextResponse } from 'next/server';
-import { Middleware, NextHandler } from '../../middleware-type';
 
 /**
  * 인증 토큰이 없으면 로그인 페이지로 리디렉션하고,

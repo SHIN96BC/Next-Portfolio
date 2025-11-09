@@ -1,9 +1,9 @@
-import BaseBinding from '../binding/BaseBinding';
-import BaseBindingImpl from '../binding/BaseBindingImpl';
-import Binding from '../binding/Binding';
-import BindingImpl from '../binding/BindingImpl';
-import { BINDING_SCOPE } from '../service-constants';
-import { BatchBaseBinding, BatchBinding } from '../service-type';
+import BaseBinding from '@Libs/service-container/binding/BaseBinding';
+import BaseBindingImpl from '@Libs/service-container/binding/BaseBindingImpl';
+import Binding from '@Libs/service-container/binding/Binding';
+import BindingImpl from '@Libs/service-container/binding/BindingImpl';
+import { BINDING_SCOPE } from '@Libs/service-container/service-constants';
+import { BatchBaseBinding, BatchBinding } from '@Libs/service-container/service-type';
 import ServiceContainer from './ServiceContainer';
 
 /**
@@ -163,10 +163,7 @@ class ServiceContainerImpl implements ServiceContainer {
     let service: T | undefined;
 
     if (binding.baseName) {
-      console.log('binding.baseName = ', binding.baseName.toString());
       const baseBinding = this.servicesBaseBind.get(binding.baseName);
-
-      console.log('baseBinding = ', baseBinding);
 
       if (baseBinding) {
         service = binding.getInstance(baseBinding.getInstance());
@@ -199,7 +196,7 @@ class ServiceContainerImpl implements ServiceContainer {
       const binding = this.servicesBind.get(name);
       return !!binding;
     } catch (e) {
-      console.log('isBound error = ', e);
+      console.error('isBound error = ', e);
       return false;
     }
   }
@@ -216,7 +213,7 @@ class ServiceContainerImpl implements ServiceContainer {
       const binding = this.servicesBaseBind.get(name);
       return !!binding;
     } catch (e) {
-      console.log('isBaseBound error = ', e);
+      console.error('isBaseBound error = ', e);
       return false;
     }
   }

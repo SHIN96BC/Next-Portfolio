@@ -4,7 +4,7 @@ import { HttpResponse, http } from 'msw';
 
 const testMockHandler = [
   http.get(`${host}/test`, async ({ request }) => {
-    console.log('msw get /test');
+    console.info('msw get /test');
     return addDelay(
       HttpResponse.json({
         status: 200,

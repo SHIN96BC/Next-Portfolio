@@ -1,5 +1,5 @@
+import { CommonRes } from '@Libs/service-container';
 import { GnbGetRes } from '@Src/entities/site/model/server';
-import { CommonRes } from '../../../../libs/service-container';
 
 export default interface SiteService {
   getGnb(): Promise<CommonRes<GnbGetRes[]>>;
