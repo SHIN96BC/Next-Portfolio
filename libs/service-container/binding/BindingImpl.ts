@@ -1,6 +1,8 @@
-import { BINDING_SCOPE, Binding, BindingScopeType, Constructor } from '../index';
-import getBindingId from './get-binding-id';
+import Binding from '@Libs//service-container/binding/Binding';
+import { BINDING_SCOPE, BindingScopeType } from '@Libs//service-container/service-constants';
+import { Constructor } from '@Libs//service-container/service-type';
 
+import getBindingId from './get-binding-id';
 /**
  * Container Biding Class
  * 컨테이너 등록에 사용되는 클래스

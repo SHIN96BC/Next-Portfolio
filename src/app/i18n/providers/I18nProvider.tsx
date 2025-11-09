@@ -1,3 +1,5 @@
+'use client';
+
 import I18nContext from '@Src/app/i18n/contexts/I18nContext';
 import { Locale } from '@Src/shared/config/i18n';
 

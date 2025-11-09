@@ -33,7 +33,8 @@ export default async function RootLayout({
   interceptionModal,
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{ lang: Locale }>;
+  // ts 컴파일 타임에는 lang 을 string 으로 받지 않으면 .next/types/validator.ts 에서 에러가 발생함
+  params: Promise<{ lang: string }>;
   interceptionModal: React.ReactNode;
 }>) {
   const session = await getServerSession(nextAuthOptions);
@@ -47,7 +48,8 @@ export default async function RootLayout({
             <NextAuthProvider session={session}>
               <AuthProvider>
                 <MockServerInit>
-                  <I18nProvider locale={lang}>
+                  {/* 미들웨어에서 Locale 이외의 값을 거르기 때문에 as 로 변환 */}
+                  <I18nProvider locale={lang as Locale}>
                     {children}
                     {interceptionModal}
                   </I18nProvider>
@@ -56,6 +58,7 @@ export default async function RootLayout({
             </NextAuthProvider>
           </ReactQueryProvider>
         </StoreProvider>
+        <div id="modal-root" />
       </body>
     </html>
   );

@@ -15,11 +15,14 @@ const useLocales = fs
   .filter((dirent) => dirent.isDirectory())
   .map((dirent) => dirent.name);
 
-const entries = useLocales.map((locale) => `  ${locale.toUpperCase()}: '${locale}',`).join('\n');
+const i18Locale = useLocales.map((locale) => `  ${locale.toUpperCase()}: '${locale}',`).join('\n');
+const supportedLocales = useLocales.map((locale) => `'${locale}'`).join(', ');
 
 const result = `export const I18N_LOCALE = {
-${entries}
+${i18Locale}
 } as const;
+
+export const supportedLocales = [${supportedLocales}]; // 지원하는 언어 목록
 
 // 지원하는 언어
 export type Locale =

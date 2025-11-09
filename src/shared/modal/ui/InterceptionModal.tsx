@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { type ElementRef, ReactNode, useEffect, useRef } from 'react';
+import { ComponentRef, ReactNode, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
 
 export default function InterceptionModal({ maxWidth, maxHeight, children }: Props) {
   const router = useRouter();
-  const dialogRef = useRef<ElementRef<'dialog'>>(null);
+  const dialogRef = useRef<ComponentRef<'dialog'>>(null);
 
   useEffect(() => {
     if (!dialogRef.current?.open) {
@@ -21,7 +21,6 @@ export default function InterceptionModal({ maxWidth, maxHeight, children }: Pro
   }, []);
 
   function onClose() {
-    console.log('modal close');
     router.back();
   }
 
@@ -29,11 +28,10 @@ export default function InterceptionModal({ maxWidth, maxHeight, children }: Pro
     <div className="absolute flex justify-center items-center top-0 left-0 right-0 bottom-0 z-[1000]">
       <dialog
         ref={dialogRef}
-        className={`relative flex justify-center items-center w-4/5 ${maxWidth ? `max-w-[${typeof maxWidth === 'number' ? `${maxWidth}px` : maxWidth}]` : 'max-w-[500px]'} ${maxHeight ? `max-h-[${typeof maxHeight === 'number' ? `${maxHeight}px` : maxHeight}]` : 'max-h-[500px]'} h-auto rounded-[12px] bg-white p-[20px]`}
+        className={`relative flex justify-center items-center w-4/5 ${maxWidth ? `max-w-[${typeof maxWidth === 'number' ? `${maxWidth}px` : maxWidth}]` : 'max-w-[500px]'} ${maxHeight ? `max-h-[${typeof maxHeight === 'number' ? `${maxHeight}px` : maxHeight}]` : 'max-h-[500px]'} h-auto rounded-[12px] bg-white p-[20px] m-auto`}
         onClose={onClose}
       >
         {children}
-        {}
         <button
           type="button"
           onClick={onClose}

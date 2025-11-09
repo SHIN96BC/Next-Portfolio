@@ -1,8 +1,8 @@
 'use client';
 
+import { serviceContainer } from '@Src/shared/config/service/service.setup';
 import { useSession } from 'next-auth/react';
 import { ReactNode, useEffect } from 'react';
-import { serviceContainer } from '../../../../libs/service-container';
 
 /**
  * Auth Provider
@@ -14,9 +14,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
   const session = useSession();
 
   useEffect(() => {
-    console.log('useSession session = ', session);
     if (session && session.data && session.data.accessToken) {
-      console.log('AuthProvider Effect');
       serviceContainer.setToken(session.data.accessToken);
     } else {
       serviceContainer.clearToken();

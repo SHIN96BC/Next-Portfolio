@@ -18,5 +18,5 @@ export default function codeGenerate({ outputPath, outputDir, result, useLocales
 
   fs.writeFileSync(outputPath, newResult, 'utf-8');
 
-  console.log(`✅ Generated ${outputPath} with [${useLocales.join(', ')}]`);
+  console.info(`✅ Generated ${outputPath} with [${useLocales.join(', ')}]`);
 }

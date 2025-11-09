@@ -16,7 +16,6 @@ export default function AuthGuard({ children }: { children: ReactNode }) {
   };
 
   const handleAlertCancelBtn = () => {
-    console.log('취소 뒤로가기');
     router.back();
   };
 

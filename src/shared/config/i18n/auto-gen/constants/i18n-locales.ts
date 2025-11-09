@@ -5,6 +5,8 @@ export const I18N_LOCALE = {
   KO: 'ko',
 } as const;
 
+export const supportedLocales = ['en', 'ko']; // 지원하는 언어 목록
+
 // 지원하는 언어
 export type Locale =
   typeof I18N_LOCALE[keyof typeof I18N_LOCALE];

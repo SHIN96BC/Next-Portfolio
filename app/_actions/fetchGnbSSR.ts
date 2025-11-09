@@ -1,7 +1,8 @@
+import { SERVICE_NAME } from '@Libs/service-container';
 import { SiteService } from '@Src/entities/site/api';
 import { SiteGnb } from '@Src/entities/site/model/client/gnb';
 import mapServerGnbToClient from '@Src/entities/site/model/mapper/map-server-gnb-to-client';
-import { SERVICE_NAME, serviceContainer } from '../../libs/service-container';
+import { serviceContainer } from '@Src/shared/config/service/service.setup';
 
 export default async function fetchGnbSSR(): Promise<SiteGnb[]> {
   const service = serviceContainer.get<SiteService>(SERVICE_NAME.SITE);

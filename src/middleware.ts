@@ -1,0 +1,28 @@
+import { stripPathPrefix } from '@Libs/middleware-container';
+import { supportedLocales } from '@Src/shared/config/i18n/auto-gen/constants/i18n-locales';
+import { middlewareContainer } from '@Src/shared/config/middleware/middleware.setup';
+import { NextRequest, NextResponse } from 'next/server';
+
+export async function middleware(request: NextRequest) {
+  if (!request.url) {
+    return NextResponse.next();
+  }
+
+  // 라우트 매칭용 prefix 제거
+  const routePath = stripPathPrefix(request.nextUrl.pathname, supportedLocales);
+
+  // 체인 실행
+  const chain = middlewareContainer.resolveByPath(routePath);
+
+  if (!chain) {
+    return NextResponse.next();
+  }
+
+  return await chain.execute(request);
+}
+
+export const config = {
+  matcher: [
+    '/((?!api|mock|_next/static|_next/image|favicon.ico|serviceWorker|mockServiceWorker|.*\\.png$|.*\\.svg$).*)',
+  ],
+};

@@ -1,4 +1,6 @@
-import { BaseBinding, BINDING_SCOPE, BindingScopeType, Constructor } from '../index';
+import BaseBinding from '@Libs/service-container/binding/BaseBinding';
+import { BINDING_SCOPE, BindingScopeType } from '@Libs/service-container/service-constants';
+import { Constructor } from '@Libs/service-container/service-type';
 import getBindingId from './get-binding-id';
 
 /**

@@ -1,7 +1,8 @@
 // 언어 결정 함수
 
+import { supportedLocales } from '@Src/shared/config/i18n/auto-gen/constants/i18n-locales';
+import { COOKIE_NAME, defaultLocale } from '@Src/shared/config/middleware/middleware-constants';
 import { NextRequest } from 'next/server';
-import { COOKIE_NAME, defaultLocale, supportedLocales } from '../index';
 
 export default function getPreferredLang(request: NextRequest): string {
   const { pathname } = request.nextUrl;

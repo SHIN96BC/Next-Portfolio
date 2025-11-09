@@ -38,8 +38,6 @@ export default function LoginForm({ isInterceptionPage }: Props) {
         redirect: false,
       });
 
-      console.log('result = ', result);
-
       if (result && result.ok) {
         if (isInterceptionPage) {
           router.back();

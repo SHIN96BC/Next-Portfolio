@@ -280,6 +280,10 @@ Fixes #98
 - Client Component 인데 SSR 이 필요하다면 Hydration 하여 사용
 - Client Component 인데 CSR 이라면 hook 을 사용
 
+## 암호화
+- openssl rand -base64 32
+
+
 ## 왜 yup이 아니라 zod를 선택했는가
 - yup의 장점
   - 오랫동안 사용되어 왔기 때문에 생태계가 넓다.

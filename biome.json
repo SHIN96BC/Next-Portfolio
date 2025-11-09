@@ -67,7 +67,12 @@
       },
       "suspicious": {
         "noArrayIndexKey": "off",
-        "noConsole": "off",
+        "noConsole": {
+          "level": "error",
+          "options": {
+            "allow": ["error", "info"]
+          }
+        },
         "noDoubleEquals": "off",
         "noEmptyBlockStatements": "off",
         "noExplicitAny": "off",
@@ -233,7 +238,7 @@
       }
     },
     {
-      "includes": ["root/libs/**/*.{ts,tsx,js,jsx}"],
+      "includes": ["libs/**/*.{ts,tsx,js,jsx}"],
       "linter": {
         "rules": {
           "style": {
@@ -242,19 +247,32 @@
               "options": {
                 "patterns": [
                   {
-                    "group": ["../**", "../../**", "../../../**", "../../../../**"],
-                    "message": "root/libs 밖 상대경로 import 금지"
+                    "group": ["../**"],
+                    "message": "🚫 libs에서는 상대경로 import 금지. alias(@Libs/*)만 사용하세요."
                   },
                   {
-                    "group": [
-                      "@Src/app/**",
-                      "@Src/pages/**",
-                      "@Src/features/**",
-                      "@Src/entities/**",
-                      "@Src/widgets/**",
-                      "@Src/shared/**"
-                    ],
-                    "message": "libs에서는 다른 레이어 import 금지"
+                    "group": ["@Src/**", "@NextApp/**", "@NextPages/**", "@Public/**"],
+                    "message": "🚫 libs에서는 다른 레이어 import 금지"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "includes": ["{app,apps,packages,src,features,widgets,entities,shared}/**/*.{ts,tsx,js,jsx,mts,cts}"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "patterns": [
+                  {
+                    "group": ["@Libs/*/**"],
+                    "message": "🚫 @Libs/<pkg> 루트 엔트리만 사용하세요 (deep import 금지)"
                   }
                 ]
               }
