@@ -1,6 +1,6 @@
 import MiddlewareChain from '@Libs/middleware-container/chain/MiddlewareChain';
 import MiddlewareChainImpl from '@Libs/middleware-container/chain/MiddlewareChainImpl';
-import { Middleware, MiddlewareChainOption, MiddlewareChainValue } from '@Libs/middleware-container/middleware-type';
+import { Middleware, MiddlewareChainOption, MiddlewareChainValue } from '@Libs/middleware-container/middleware.type';
 import { mergeUniquePreserveOrder } from '@Libs/utils/merge-unique-preserve-order';
 import MiddlewareContainer from './MiddlewareContainer';
 

@@ -1,6 +1,6 @@
 import I18nContext from '@Src/app/i18n/contexts/I18nContext';
 import { getI18nDictionary, Namespace } from '@Src/shared/config/i18n';
-import { DictionaryNamespaceMap } from '@Src/shared/config/i18n/i18n-type';
+import { DictionaryNamespaceMap } from '@Src/shared/config/i18n/i18n.type';
 import { useContext, useEffect, useState } from 'react';
 
 const useI18nContext = () => {

@@ -138,18 +138,18 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## File Name Pattern
 | 역할 / 타입               | 권장 명명 규칙             | 예시 파일명                                   | 비고                               |
-| --------------------- | -------------------- | ---------------------------------------- | -------------------------------- |
+| --------------------- | -------------------- |------------------------------------------| -------------------------------- |
 | **React Component**   | `PascalCase`         | `LoginModal.tsx`, `UserCard.tsx`         | **무조건 PascalCase**. JSX/TSX 컴포넌트 |
 | **Next.js 페이지**       | `lowercase`          | `page.tsx`, `layout.tsx`, `route.ts`     | Next 13+ app dir 기준              |
 | **유틸 함수 / 헬퍼**        | `kebab-case`         | `format-date.ts`, `parse-url.ts`         | 일반 함수/로직 파일은 kebab-case          |
 | **커스텀 훅**             | `camelCase` 시작       | `useAuth.ts`, `useScroll.ts`             | `use` prefix 유지, camelCase       |
-| **타입/모델 정의**          | `kebab-case`         | `user-model.ts`, `auth-types.ts`         | 도메인 기준으로 prefix 붙임               |
+| **타입/모델 정의**          | `kebab-case`         | `user-model.ts`, `auth.types.ts`         | 도메인 기준으로 prefix 붙임               |
 | **enum 정의**           | `kebab-case + .enum` | `status.enum.ts`                         | enum만 따로 관리할 경우                  |
 | **상수 파일 (도메인)**       | `kebab-case`         | `auth-constants.ts`, `user-constants.ts` | 도메인 기준 prefix                    |
 | **상수 파일 (글로벌)**       | `constants.ts`       | `constants.ts`                           | 작은 프로젝트 or 전역 상수                 |
 | **API 핸들러 (Next.js)** | `route.ts`           | `route.ts`                               | Next 13 app router 표준            |
 | **설정 / 초기화**          | `dot.case`           | `jest.setup.ts`, `next.config.js`        | Node, Tool 설정계층 파일               |
-| **스키마 (zod 등)**       | `kebab-case`         | `user-schema.ts`, `env-schema.ts`        | 주로 zod/yup 스키마에서 사용              |
+| **스키마 (zod 등)**       | `kebab-case`         | `user-schema.ts`, `env.schema.ts`        | 주로 zod/yup 스키마에서 사용              |
 | **DTO / Entity**      | `kebab-case`         | `user.dto.ts`, `product.entity.ts`       | 백엔드 스타일일 땐 suffix 구분             |
 
 
@@ -173,7 +173,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
   - use(Domain Name)Service.ts: Api Call Custom Hooks 정의
 - /services/model.ts: 공통 Request, Response Model 정의
 - /services/service-constants.ts: Service에서 공통으로 사용되는 상수 값들 정의
-- /services/service-type.d.ts: Service에서 공통으로 사용되는 type 정의
+- /services/service.type.d.ts: Service에서 공통으로 사용되는 type 정의
 
 ## REST Service Naming Rules
 - /service/domain/(Domain Name):

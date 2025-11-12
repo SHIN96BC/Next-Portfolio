@@ -1,4 +1,4 @@
-import { Middleware } from '@Libs/middleware-container/middleware-type';
+import { Middleware } from '@Libs/middleware-container/middleware.type';
 import { NextRequest, NextResponse } from 'next/server';
 import MiddlewareChain from './MiddlewareChain';
 

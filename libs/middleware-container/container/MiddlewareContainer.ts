@@ -1,5 +1,5 @@
 import MiddlewareChain from '@Libs/middleware-container/chain/MiddlewareChain';
-import { Middleware, MiddlewareChainOption } from '@Libs/middleware-container/middleware-type';
+import { Middleware, MiddlewareChainOption } from '@Libs/middleware-container/middleware.type';
 
 export default interface MiddlewareContainer {
   use(name: string, middleware: Middleware): this;

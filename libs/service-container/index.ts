@@ -8,6 +8,6 @@ export type { default as Binding } from './binding/Binding';
 export { default as BindingImpl } from './binding/BindingImpl';
 export type { default as ServiceContainer } from './container/ServiceContainer';
 export { default as ServiceContainerImpl } from './container/ServiceContainerImpl';
+export type * from './service.type';
 export * from './service-constants';
 export * from './service-model';
-export type * from './service-type';

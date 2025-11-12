@@ -1,6 +1,6 @@
 import 'server-only';
 import { Locale, Namespace } from '@Src/shared/config/i18n';
-import { DictionaryNamespaceMap } from '@Src/shared/config/i18n/i18n-type';
+import { DictionaryNamespaceMap } from '@Src/shared/config/i18n/i18n.type';
 import getI18nDictionary from '@Src/shared/config/i18n/utils/get-i18n-dictionary';
 
 /**
