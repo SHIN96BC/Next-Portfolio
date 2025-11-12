@@ -1,7 +1,7 @@
 'use client';
 
 import { hideCommonAlert } from '@Src/shared/alert/model/common-alert-slice';
-import { RootState } from '@Src/shared/config/store/model/store-type';
+import { RootState } from '@Src/shared/config/store/model/store.type';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 

@@ -1,2 +1,2 @@
 export { default as EncryptedStorage } from './encrypted-storage';
-export type { StorageLike } from './storage-type';
+export type { StorageLike } from './storage.type';
