@@ -1,4 +1,4 @@
-import type { AppStore } from '@Src/app/store';
+import type { AppStore } from '@Src/app/store/model';
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<AppStore['getState']>;

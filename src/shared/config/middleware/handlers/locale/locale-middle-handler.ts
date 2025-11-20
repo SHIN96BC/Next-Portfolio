@@ -1,6 +1,7 @@
 import { Middleware, NextHandler } from '@Libs/middleware-container';
+import { createCustomMiddlewareCookie } from '@Src/shared/config/cookie/cookie-private.setup';
+import { COOKIE_DEFAULT_AGE, COOKIE_LANG_NAME } from '@Src/shared/config/cookie/model';
 import { supportedLocales } from '@Src/shared/config/i18n/auto-gen/constants/i18n-locales';
-import { COOKIE_AGE, COOKIE_NAME } from '@Src/shared/config/middleware/middleware-constants';
 import getPreferredLang from '@Src/shared/config/middleware/utils/get-preferred-lang';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -18,7 +19,9 @@ const localeMiddleHandler: Middleware = async (req: NextRequest, next: NextHandl
     const newUrl = new URL(`/${lang}${pathname}${search}`, origin);
     const response = NextResponse.redirect(newUrl);
 
-    response.cookies.set(COOKIE_NAME, lang, { path: '/', maxAge: COOKIE_AGE });
+    const cookieJar = createCustomMiddlewareCookie(response);
+
+    cookieJar.set(COOKIE_LANG_NAME, lang, { path: '/', maxAge: COOKIE_DEFAULT_AGE });
 
     return response;
   }

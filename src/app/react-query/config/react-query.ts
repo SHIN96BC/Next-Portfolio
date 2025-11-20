@@ -1,5 +1,5 @@
 import { isEqual } from '@Libs/utils';
-import { getQueryClient } from '@Src/shared/config/react-query/query-client';
+import { getQueryClient } from '@Src/shared/config/react-query/react-query.setup';
 import { dehydrate, QueryKey, QueryState } from '@tanstack/react-query';
 
 type UnwrapPromise<T> = T extends Promise<infer U> ? U : T;

@@ -11,6 +11,7 @@ import { getServerSession } from 'next-auth';
 import '@Src/shared/config/mock/mock-server.setup';
 import I18nProvider from '@Src/app/i18n/providers/I18nProvider';
 import { Locale } from '@Src/shared/config/i18n';
+import getThemeCookie from '@Src/shared/config/theme/server-action/getThemeCookie';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -39,9 +40,10 @@ export default async function RootLayout({
 }>) {
   const session = await getServerSession(nextAuthOptions);
   const { lang } = await params;
+  const theme = await getThemeCookie();
 
   return (
-    <html lang={lang}>
+    <html lang={lang} className={theme === 'dark' ? 'dark' : ''} style={{ colorScheme: theme }}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <StoreProvider>
           <ReactQueryProvider>
