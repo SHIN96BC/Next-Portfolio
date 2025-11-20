@@ -173,7 +173,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
   - use(Domain Name)Service.ts: Api Call Custom Hooks 정의
 - /services/model.ts: 공통 Request, Response Model 정의
 - /services/service-constants.ts: Service에서 공통으로 사용되는 상수 값들 정의
-- /services/service.type.d.ts: Service에서 공통으로 사용되는 type 정의
+- /services/service.type.ts: Service에서 공통으로 사용되는 type 정의
 
 ## REST Service Naming Rules
 - /service/domain/(Domain Name):

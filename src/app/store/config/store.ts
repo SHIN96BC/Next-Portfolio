@@ -35,6 +35,3 @@ export const makeStore = () => {
       }),
   });
 };
-
-// Infer the type of makeStore
-export type AppStore = ReturnType<typeof makeStore>;

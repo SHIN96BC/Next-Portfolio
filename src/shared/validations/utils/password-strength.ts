@@ -1,7 +1,7 @@
 /**
  * Password validator for login pages
  */
-import { NumbColorFunc, StringBoolFunc, StringNumFunc } from '@Src/shared/validations/model/password';
+import { NumbColorFunc, StringBoolFunc, StringNumFunc } from '@Src/shared/validations/model/types';
 
 // has number
 const hasNumber: StringBoolFunc = (number) => /[0-9]/.test(number);

@@ -1,10 +1,9 @@
 // import ModalOverlay from '@Src/shared/modal/ui/ModalOverlay';
-import { RadialMenuType } from '@Src/shared/radial-menu/model';
-import { dataRadialMenu } from '@Src/shared/radial-menu/redial-menu.setup';
+import { RadialMenuType } from '@Src/features/radial-menu/model';
+import { dataRadialMenu } from '@Src/features/radial-menu/redial-menu.setup';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
-import styles from './index.module.scss';
 
 // 3개 이하로는 깨짐
 type MenuCountStr = '4' | '5' | '6' | '7' | '8';
@@ -82,13 +81,12 @@ export default function RadialMenu({ active, onClose }: { active?: boolean; onCl
   }, [active]);
 
   return (
-    <div className={`flex items-center justify-center ${styles.mDial}`}>
+    <div className={`flex items-center justify-center`}>
       {active &&
         (isOpenModal ? (
           <div />
           // <ModalOverlay
           //   centered
-          //   className={styles.modalCustome}
           //   closable={false}
           //   footer={false}
           //   maskStyle={{ zIndex: 1000 }}
@@ -125,16 +123,16 @@ export default function RadialMenu({ active, onClose }: { active?: boolean; onCl
 
       <div className="relative w-full h-full flex items-center justify-center ">
         {/* 로고 (터치 중심 ref는 아래 흰 원에만) */}
-        <div className={`absolute  ${active ? 'z-[999] w-[87px] h-[87px] ' : 'w-0 h-0 '} ${styles.bgLogo}`} />
+        <div
+          className={`absolute  ${active ? 'z-[999] w-[87px] h-[87px] ' : 'w-0 h-0 '} rounded-full bg-[linear-gradient(180deg,#009c75,#cfdb08)] shadow-[inset_0_3px_6px_#005d46,0_0_50px_#009c7580]`}
+        />
         <div
           className={`absolute bg-white rounded-full ${active ? 'z-[995] w-[140px] h-[140px] ' : 'w-0 h-0 '}`}
           ref={centerAnchorRef}
         />
         <div
-          className={`relative overflow-hidden rounded-full m-0 bg-white
-          ${active === true && styles.active}
-          ${active === false && styles.deActive}
-          ${styles.wrapper}
+          className={`relative overflow-hidden rounded-full m-0 bg-white shadow-[0_3px_6px_#111111] [-webkit-mask-image:-webkit-radial-gradient(white,black)]
+          ${active && 'active animate-[open_0.8s] w-[335px] h-[335px]'}
           `}
           onClick={() => onClose?.()}
           onTouchEnd={() => {

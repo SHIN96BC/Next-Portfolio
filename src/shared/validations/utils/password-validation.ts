@@ -14,6 +14,6 @@ export function isSpecialChar(value: string): boolean {
   return /^(?=.*[-+_!@#$%^&*.,?]).+$/.test(value);
 }
 
-export function minLength(value: string): boolean {
-  return value.length > 7;
+export function checkMinLength(value: string, limit: number): boolean {
+  return value.length > limit;
 }

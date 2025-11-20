@@ -1,4 +1,4 @@
-import { RadialMenuType } from '@Src/shared/radial-menu/model';
+import { RadialMenuType } from '@Src/features/radial-menu/model';
 
 export const dataRadialMenu: RadialMenuType[] = [
   {
