@@ -1,2 +1,2 @@
 export { aesDecrypt, aesEncrypt } from './crypto';
-export { compareMD5HashClient, compareMD5HashServer, toMD5HashClient, toMD5HashServer } from './md5-hex';
+export { compareMD5HashClient, toMD5HashClient } from './md5/md5-hex';

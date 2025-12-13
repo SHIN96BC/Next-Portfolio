@@ -8,6 +8,8 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  request.cookies.set('test', 'test');
+
   // 라우트 매칭용 prefix 제거
   const routePath = stripPathPrefix(request.nextUrl.pathname, supportedLocales);
 

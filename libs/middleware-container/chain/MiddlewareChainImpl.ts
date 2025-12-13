@@ -6,7 +6,11 @@ import MiddlewareChain from './MiddlewareChain';
  * 등록된 미들웨어 배열을 순차적으로 실행하는 체인 클래스
  */
 export default class MiddlewareChainImpl implements MiddlewareChain {
-  constructor(private chain: Middleware[]) {}
+  private readonly chain: Middleware[];
+
+  constructor(chain: Middleware[]) {
+    this.chain = chain;
+  }
 
   /**
    * 미들웨어 체인을 실행하는 메서드

@@ -1,6 +1,6 @@
 'use client';
 
-import { getQueryClient } from '@Src/shared/config/react-query/query-client';
+import { getQueryClient } from '@Src/shared/config/react-query/react-query.setup';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { PropsWithChildren, ReactNode } from 'react';

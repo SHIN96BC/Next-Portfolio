@@ -10,7 +10,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 <div>
     <div>
         <img src="https://img.shields.io/badge/Node.js(v22.17.0)-339933?style=flat&logo=node.js&logoColor=white"/>
-        <img src="https://img.shields.io/badge/npm(v10.9.1)-CB3837?style=flat&logo=npm&logoColor=white"/>
+        <img src="https://img.shields.io/badge/npm(v11.7.0)-CB3837?style=flat&logo=npm&logoColor=white"/>
     </div>
     <div>
         <img src="https://img.shields.io/badge/Next(v15.5.6)-000000?style=flat&logo=next.js&logoColor=white"/>
@@ -173,7 +173,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
   - use(Domain Name)Service.ts: Api Call Custom Hooks 정의
 - /services/model.ts: 공통 Request, Response Model 정의
 - /services/service-constants.ts: Service에서 공통으로 사용되는 상수 값들 정의
-- /services/service.type.d.ts: Service에서 공통으로 사용되는 type 정의
+- /services/service.type.ts: Service에서 공통으로 사용되는 type 정의
 
 ## REST Service Naming Rules
 - /service/domain/(Domain Name):

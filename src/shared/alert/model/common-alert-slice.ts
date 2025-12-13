@@ -1,4 +1,4 @@
-import { ThemeColorsType } from '@Src/shared/theme/model/colors';
+import { ThemeColorsType } from '@Src/shared/config/theme/model/colors';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface CommonAlertState {

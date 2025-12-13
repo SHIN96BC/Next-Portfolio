@@ -4,7 +4,7 @@ export type Constructor<T> = new (...args: any[]) => T;
 
 type CommonBatch = {
   name: symbol;
-  target: Constructor;
+  target: Constructor<any>;
 };
 
 // 서비스용: baseName 필수

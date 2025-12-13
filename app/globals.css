@@ -1,16 +1,23 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* v4에서는 다크모드를 class로 쓰려면 커스텀 variant를 CSS에 선언 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 사용자 에이전트에도 힌트 */
+html {
+  color-scheme: light dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* bg-background / text-foreground 같은 유틸이 생기고,
+     실제 CSS엔 var(--bg)/var(--fg)로 출력되어 .dark에서 값이 바뀌면 즉시 반영됨 */
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-primary: var(--primary);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
 }
 
-/* ⛏️ 여기 오타: staric -> static */
 @theme static {
   --color-primary-light: #c9c4f9;
   --color-primary: #9e95f5;
@@ -25,6 +32,23 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+}
+
+/* 디자인 토큰(런타임 변경 가능한 CSS 변수) */
+:root {
+  --bg: oklch(1 0 0);
+  --fg: oklch(0.2 0 0);
+  --muted: oklch(0.97 0.01 260);
+  --primary: oklch(0.72 0.17 260);
+  --border: oklch(0.9 0.02 260);
+}
+
+.dark {
+  --bg: oklch(0.12 0.02 260);
+  --fg: oklch(0.97 0.01 260);
+  --muted: oklch(0.19 0.02 260);
+  --primary: oklch(0.75 0.1 260);
+  --border: oklch(0.25 0.02 260);
 }
 
 body {
