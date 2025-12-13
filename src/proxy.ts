@@ -3,7 +3,7 @@ import { supportedLocales } from '@Src/shared/config/i18n/auto-gen/constants/i18
 import { middlewareContainer } from '@Src/shared/config/middleware/middleware.setup';
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   if (!request.url) {
     return NextResponse.next();
   }
