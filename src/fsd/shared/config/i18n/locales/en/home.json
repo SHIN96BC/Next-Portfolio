@@ -1,0 +1,11 @@
+{
+  "title": "Main Page",
+  "header": {
+    "homeBtn": "Home",
+    "loginBtn": "Login",
+    "logoutBtn": "Logout"
+  },
+  "btn": {
+    "title": "Button"
+  }
+}

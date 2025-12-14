@@ -1,0 +1,11 @@
+{
+  "title": "メインページ",
+  "header": {
+    "homeBtn": "ホーム",
+    "loginBtn": "ログイン",
+    "logoutBtn": "ログアウト"
+  },
+  "btn": {
+    "title": "ボタン"
+  }
+}
