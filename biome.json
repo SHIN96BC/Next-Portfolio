@@ -111,7 +111,7 @@
   },
   "overrides": [
     {
-      "includes": ["src/shared/**", "!src/shared/config/**", "!@Src/shared/config/**"],
+      "includes": ["src/fsd/shared/**", "!src/fsd/shared/config/**", "!@Src/fsd/shared/config/**"],
       "linter": {
         "rules": {
           "style": {
@@ -121,16 +121,16 @@
                 "patterns": [
                   {
                     "group": [
-                      "@Src/app/**",
-                      "@Src/pages/**",
-                      "@Src/widgets/**",
-                      "@Src/features/**",
-                      "@Src/entities/**",
-                      "../app/**",
-                      "../pages/**",
-                      "../widgets/**",
-                      "../features/**",
-                      "../entities/**"
+                      "@Src/fsd/app/**",
+                      "@Src/fsd/pages/**",
+                      "@Src/fsd/widgets/**",
+                      "@Src/fsd/features/**",
+                      "@Src/fsd/entities/**",
+                      "../fsd/app/**",
+                      "../fsd/pages/**",
+                      "../fsd/widgets/**",
+                      "../fsd/features/**",
+                      "../fsd/entities/**"
                     ],
                     "message": "🚫 shared 레이어에서는 app/pages/widgets/features/entities 를 import 할 수 없습니다."
                   }
@@ -152,14 +152,14 @@
                 "patterns": [
                   {
                     "group": [
-                      "@Src/app/**",
-                      "@Src/pages/**",
-                      "@Src/widgets/**",
-                      "@Src/features/**",
-                      "../app/**",
-                      "../pages/**",
-                      "../widgets/**",
-                      "../features/**"
+                      "@Src/fsd/app/**",
+                      "@Src/fsd/pages/**",
+                      "@Src/fsd/widgets/**",
+                      "@Src/fsd/features/**",
+                      "../fsd/app/**",
+                      "../fsd/pages/**",
+                      "../fsd/widgets/**",
+                      "../fsd/features/**"
                     ],
                     "message": "🚫 entities 레이어에서는 app/pages/widgets/features 를 import 할 수 없습니다."
                   }
@@ -181,12 +181,12 @@
                 "patterns": [
                   {
                     "group": [
-                      "@Src/app/**",
-                      "@Src/pages/**",
-                      "@Src/widgets/**",
-                      "../app/**",
-                      "../pages/**",
-                      "../widgets/**"
+                      "@Src/fsd/app/**",
+                      "@Src/fsd/pages/**",
+                      "@Src/fsd/widgets/**",
+                      "../fsd/app/**",
+                      "../fsd/pages/**",
+                      "../fsd/widgets/**"
                     ],
                     "message": "🚫 features 레이어에서는 app/pages/widgets 를 import 할 수 없습니다."
                   }
@@ -207,7 +207,7 @@
               "options": {
                 "patterns": [
                   {
-                    "group": ["@Src/app/**", "@Src/pages/**", "../app/**", "../pages/**"],
+                    "group": ["@Src/fsd/app/**", "@Src/fsd/pages/**", "../fsd/app/**", "../fsd/pages/**"],
                     "message": "🚫 widgets 레이어에서는 app/pages 를 import 할 수 없습니다."
                   }
                 ]
@@ -227,7 +227,7 @@
               "options": {
                 "patterns": [
                   {
-                    "group": ["@Src/app/**", "../app/**"],
+                    "group": ["@Src/fsd/app/**", "../fsd/app/**"],
                     "message": "🚫 pages 레이어에서는 app 를 import 할 수 없습니다."
                   }
                 ]

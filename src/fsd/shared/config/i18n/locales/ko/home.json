@@ -1,0 +1,11 @@
+{
+  "title": "메인 페이지",
+  "header": {
+    "homeBtn": "홈",
+    "loginBtn": "로그인",
+    "logoutBtn": "로그아웃"
+  },
+  "btn": {
+    "title": "버튼"
+  }
+}

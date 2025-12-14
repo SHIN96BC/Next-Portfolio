@@ -1,6 +1,6 @@
-import { stripPathPrefix } from '@Libs/middleware-container';
-import { supportedLocales } from '@Src/shared/config/i18n/auto-gen/constants/i18n-locales';
-import { middlewareContainer } from '@Src/shared/config/middleware/middleware.setup';
+import { supportedLocales } from '@FsdShared/config/i18n/auto-gen/constants/i18n-locales';
+import { proxyContainer } from '@FsdShared/config/proxy/proxy.setup';
+import { stripPathPrefix } from '@Libs/proxy-container';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function proxy(request: NextRequest) {
@@ -14,7 +14,7 @@ export async function proxy(request: NextRequest) {
   const routePath = stripPathPrefix(request.nextUrl.pathname, supportedLocales);
 
   // 체인 실행
-  const chain = middlewareContainer.resolveByPath(routePath);
+  const chain = proxyContainer.resolveByPath(routePath);
 
   if (!chain) {
     return NextResponse.next();

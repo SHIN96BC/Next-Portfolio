@@ -1,0 +1,1 @@
+export { defaultLocale } from './constants';
