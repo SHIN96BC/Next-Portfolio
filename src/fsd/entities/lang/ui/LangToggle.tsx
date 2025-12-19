@@ -19,9 +19,9 @@ function replaceLangInPath(pathname: string, to: Locale) {
 export default function LangToggle() {
   const router = useRouter();
   const pathname = usePathname() || '/';
-  const params = useParams<{ lang?: string }>();
+  const params = useParams<{ lang: string }>();
   const currentLang =
-    params.lang && supportedLocales.includes(params.lang as Locale) ? (params.lang as Locale) : defaultLocale;
+    params?.lang && supportedLocales.includes(params.lang as Locale) ? (params.lang as Locale) : defaultLocale;
 
   return (
     <div className="inline-block">
