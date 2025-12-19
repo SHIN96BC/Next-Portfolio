@@ -1,7 +1,7 @@
 'use client';
 
 import { LoginSchemaType, loginSchema } from '@FsdFeatures/login/model/schema';
-import { CommonInput } from '@FsdShared/input/ui';
+import { CommonInput } from '@FsdShared/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
