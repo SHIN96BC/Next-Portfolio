@@ -11,7 +11,8 @@ const themeMiddleHandler: Proxy = async (req: NextRequest, next: NextHandler) =>
   const { pathname } = req.nextUrl;
 
   // 기존 쿠키 확인
-  let theme = req.cookies.get(COOKIE_THEME_NAME)?.value as ThemeType | undefined;
+  const cookieReqJar = createCustomPublicProxyCookie(req);
+  let theme = cookieReqJar.get(COOKIE_THEME_NAME) as ThemeType | undefined;
 
   // light/dark 외 값이 들어온 경우 정리
   if (theme !== 'light' && theme !== 'dark') {
