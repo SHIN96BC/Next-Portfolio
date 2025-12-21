@@ -1,5 +1,5 @@
 import { BrowserCookieJar, makeNextServerCookieJar, ProxyCookieJar } from '@Libs/cookie';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 /** 브라우저용 */
 export const customBrowserCookie = new BrowserCookieJar(process.env.NEXT_PUBLIC_COOKIE_SECRET_KEY ?? '');
@@ -8,5 +8,5 @@ export const customBrowserCookie = new BrowserCookieJar(process.env.NEXT_PUBLIC_
 export const createCustomPublicNextServerCookie = () =>
   makeNextServerCookieJar(process.env.NEXT_PUBLIC_COOKIE_SECRET_KEY ?? '');
 
-export const createCustomPublicProxyCookie = (res: NextResponse) =>
-  new ProxyCookieJar(res, process.env.NEXT_PUBLIC_COOKIE_SECRET_KEY ?? '');
+export const createCustomPublicProxyCookie = (store: NextRequest | NextResponse) =>
+  new ProxyCookieJar(store, process.env.NEXT_PUBLIC_COOKIE_SECRET_KEY ?? '');
