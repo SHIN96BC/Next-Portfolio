@@ -1,3 +1,3 @@
-export default function AuthLoginDefault() {
-  return null;
-}
+import DefaultPage from '@FsdPages/default';
+
+export default DefaultPage;

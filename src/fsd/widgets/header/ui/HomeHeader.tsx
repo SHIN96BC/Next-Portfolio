@@ -18,7 +18,7 @@ export default async function HomeHeader({ isLogin, gnbList, themeType }: Props)
   const { dict } = await getI18nTranslator(lang, I18N_DICTIONARY_NAMESPACE.HOME);
 
   return (
-    <header className="sticky top-0 p-4 bg-primary text-white">
+    <header className="sticky top-0 z-50 p-4 bg-primary text-white">
       <div className="w-full flex items-center justify-between">
         <div>
           <HomeBtn />

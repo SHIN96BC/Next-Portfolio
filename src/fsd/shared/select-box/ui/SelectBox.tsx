@@ -179,6 +179,7 @@ export default function SelectBox<T extends string | number = string>({
             'flex w-full items-center justify-between rounded-xl border bg-background text-left outline-none transition',
             'focus:border-primary focus:ring-4 focus:ring-primary/20',
             'disabled:cursor-not-allowed disabled:opacity-60',
+            'cursor-pointer',
             isError ? 'border-red-500 focus:border-red-600 focus:ring-red-500/20' : 'border-border',
             paddings(size, !!leftIcon, true),
             className
