@@ -44,6 +44,7 @@ export default function ThemeToggle({ themeType = 'light' as 'light' | 'dark', p
         px-3 py-2 rounded border
         bg-background text-foreground
         transition-colors duration-150
+        cursor-pointer
         ${isLoading ? 'cursor-not-allowed opacity-80' : 'hover:bg-muted'}
       `}
     >

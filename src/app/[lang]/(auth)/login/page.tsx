@@ -1,10 +1,3 @@
-import { LoginForm } from '@FsdFeatures/login/ui';
+import LoginPage from '@FsdPages/login';
 
-export default function LoginPage() {
-  return (
-    <div>
-      <div>Login Page</div>
-      <LoginForm />
-    </div>
-  );
-}
+export default LoginPage;

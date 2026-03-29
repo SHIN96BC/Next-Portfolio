@@ -1,3 +1,3 @@
-export default function LangNotFound() {
-  return <div>404 Not Found</div>;
-}
+import RootNotFound from '@FsdPages/not-found';
+
+export default RootNotFound;

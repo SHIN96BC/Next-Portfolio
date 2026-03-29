@@ -1,10 +1,3 @@
-import { LoginForm } from '@FsdFeatures/login/ui';
-import { InterceptionModal } from '@FsdShared/modal/ui';
+import InterceptionModalLoginPage from '@FsdPages/interception-modal/login';
 
-export default function AuthModalLoginPage() {
-  return (
-    <InterceptionModal maxWidth={500} maxHeight={500}>
-      <LoginForm isInterceptionPage />
-    </InterceptionModal>
-  );
-}
+export default InterceptionModalLoginPage;
